@@ -1,0 +1,1738 @@
+Delivered-To: justin.khoo@gmail.com
+Received: by 2002:a17:90a:3b41:0:0:0:0 with SMTP id t1-v6csp1068916pjf;
+        Fri, 15 Jun 2018 10:42:20 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJNZUnb1q5P0u+uZKlgxEhgm3JXnA9XLLxnvVbW96eMLwgy+MD/Lr3T279Uoi4KachfLQjX
+X-Received: by 2002:a17:902:bd93:: with SMTP id q19-v6mr3058869pls.342.1529084540311;
+        Fri, 15 Jun 2018 10:42:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529084540; cv=none;
+        d=google.com; s=arc-20160816;
+        b=0c6rM6+XFIE6fIyRPGrVxZdgVP/Wo4xvm2G+ZXZ5hH5te91pL70w5mUtZgnaLtXacA
+         30yUZEcVJZ+26N769eEWYbxUL7utujjjDcx1vu6xEEmuNKCAhpD/UenUjQyCeep8Ib2i
+         u5Fj0r26brghAldx67wqhLIszY2TEAWbflcZNCS3TF1bMhEL9RHvtUMaIqy7dAAgs1b8
+         mA5I8vQPvKJGVeHcm8wWbg3WlmfYNuAko1W/JHstsRtqrIPJ2X02X7BrcjSzvW1fdgOI
+         YFx3ZU1YmPV4NjumHmKpuXBeVxWEo18O6N958SeOvpY9Iu85p9oioxYcDIYiX546TPzy
+         3S6Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:list-unsubscribe:feedback-id:subject:reply-to:from:to
+         :date:content-transfer-encoding:mime-version:dkim-signature
+         :dkim-signature:arc-authentication-results;
+        bh=oKAvadLbfc7w593vCpIg4aahzXNhsDuCZCQR0RY4L9I=;
+        b=fVK015UhIRAnoWrl9bVOWvMrrsXKbxGJvmlqafsq4MgWLFQ/mm2hTcDoRJq/xggMRK
+         FgUS046p2MxPObfGnoVAo+6gSLxkGYFi1Tjc41463pca4N0w8pqB3mXH+nUTmijLnGXN
+         oF2ldRtDlP0Hbwbj9iSk9cKPwBCm3xjxE+wTUFDhioaa9PvFGH8UhztG+O+LnewvONEb
+         I1bxZSYUwt+GMIWGn1uNxKMByhIP5ZNyNSJiyznsTKEDYo0ZkT9v0gg7c3t9Bdcv2AHS
+         Ca3LFmbmMhQxaE399SrESei25LN4n2KmDJmZgP2RVWOqLZCdCsSHgBR1eabFf62YUqGy
+         nmoA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@notices.rei.com header.s=rei header.b=aK3cOZ1T;
+       dkim=pass header.i=@responsys.net header.s=oraclersys header.b=o5SkX02f;
+       spf=pass (google.com: domain of rei_gearmail@notices.rei.com designates 199.7.202.95 as permitted sender) smtp.mailfrom=REI_Gearmail@notices.rei.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notices.rei.com
+Return-Path: <REI_Gearmail@notices.rei.com>
+Received: from omp.notices.rei.com (omp.notices.rei.com. [199.7.202.95])
+        by mx.google.com with ESMTPS id r73-v6si699888pgr.500.2018.06.15.10.42.19
+        for <justin.khoo@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 15 Jun 2018 10:42:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rei_gearmail@notices.rei.com designates 199.7.202.95 as permitted sender) client-ip=199.7.202.95;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@notices.rei.com header.s=rei header.b=aK3cOZ1T;
+       dkim=pass header.i=@responsys.net header.s=oraclersys header.b=o5SkX02f;
+       spf=pass (google.com: domain of rei_gearmail@notices.rei.com designates 199.7.202.95 as permitted sender) smtp.mailfrom=REI_Gearmail@notices.rei.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notices.rei.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=rei; d=notices.rei.com;
+ h=MIME-Version:Content-Type:Content-Transfer-Encoding:Date:To:From:Reply-To:
+ Subject:Feedback-ID:List-Unsubscribe:Message-ID;
+ i=REI_Gearmail@notices.rei.com;
+ bh=oKAvadLbfc7w593vCpIg4aahzXNhsDuCZCQR0RY4L9I=;
+ b=aK3cOZ1Tpp/2Djs6AhST8OJvESxR6rY0HPlRrzDO2ePcklgvKeeSbYbE4xRM75A+a9BxfJ3DyubQ
+   CZxHw1TkhJtIh3c9F/bkWEnx5LK1mVs7/F2Nu2yt+ay/fwWHSVvszZx4Q9wKr31iBHqRtfstaNh3
+   obU1ngPIaOrvU1SnbLo=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=oraclersys; d=responsys.net;
+ h=MIME-Version:Content-Type:Content-Transfer-Encoding:Date:To:From:Reply-To:
+ Subject:Feedback-ID:List-Unsubscribe:Message-ID;
+ bh=oKAvadLbfc7w593vCpIg4aahzXNhsDuCZCQR0RY4L9I=;
+ b=o5SkX02f6BSAWpbNW5Q69zlCPzob1Nz5+CjielRpf8aFwokTv1FNVK1egbUxQ8CQ+VLehBgyuBJF
+   X5diawZt+Re0Ikktr8b+4ksvRB/moFVp0NSUDq6AdcwoXSbD7Zc7li3xPMBzfZUhYU7RPesvzPd8
+   tba35TZtKK6DJ9PyMXU=
+Received: by omp.notices.rei.com id h4ft7o2b610m for <justin.khoo@gmail.com>; Fri, 15 Jun 2018 10:38:36 -0700 (envelope-from <REI_Gearmail@notices.rei.com>)
+X-CSA-Complaints: whitelist-complaints@eco.de
+MIME-Version: 1.0
+Content-Type: text/html;
+  charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Date: Fri, 15 Jun 2018 10:38:36 -0700
+To: justin.khoo@gmail.com
+From: =?UTF-8?B?UkVJIE91dGxldA==?= <REI_Gearmail@notices.rei.com>
+Reply-To: =?UTF-8?B?UkVJIE91dGxldA==?= <REI-GM@notices.rei.com>
+Subject: =?UTF-8?B?TGltaXRlZCBUaW1l4oCUJDIwIE9mZiBPcmRlcnMgb2YgJDEwMCA=?=
+  =?UTF-8?B?b3IgTW9yZQ==?=
+Feedback-ID: 50603:10143458:oraclersys
+List-Unsubscribe: <https://notices.rei.com/pub/optout/UnsubscribeOneStepConfirmAction?YES=true&_ri_=X0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1uW&_ei_=EopaoqASqentiB8Ja6uo-i5L6DvuzfERx6LN3eQRGTVR29PplcJWU2dpR8hH2q8s2Gk3rcz7nUEzaCANo07UW8q4woA6Yd8x_mh_9keIEJFDicXKsEcj8ZDaVIdJFof2gReub5RH7Wp1lE9H>, <mailto:unsubscribe-YQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1uW@imh.rsys5.com?subject=List-Unsubscribe>
+X-sgxh1: rmklpgQsohhxnuHptQJhu
+X-rext: 5.interact5.ElKWNcaP6PS6l28hKk9sqZXNnFIgelcex2EH7JLDKxpMEO4Pn9wPC_eVVXpmSm4
+X-cid: rei.10118734
+X-campaign-version-id: 392000305
+Message-ID: <0.1.BF.15C.1D404CFB0B09B72.0@omp.notices.rei.com>
+
+<=21DOCTYPE HTML PUBLIC =22-//W3C//DTD HTML 4=2E01 Transitional//EN=22 =22h=
+ttp://www=2Ew3=2Eorg/TR/html4/loose=2Edtd=22>
+<html>
+<=21--PREVIEW_TEXT_SNIPPET_STARTS_ON_NEXT_LINE-->
+<span style=3D=22display: none; font-size:0px; line-height:0px; max-height:=
+ 0px; max-width:0px; width:0px; opacity:0; overflow: hidden; color:=23fffff=
+f;=22>
+Act fast, this great deal only lasts thru 6/21
+</span>
+<span style=3D=22display: none; font-size:0px; line-height:0px; max-height:=
+ 0px; max-width:0px; width:0px; opacity:0; overflow: hidden; color:=23fffff=
+f;=22>
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+</span>
+<head>
+<meta http-equiv=3D=22Content-Type=22 content=3D=22text/html; charset=3Dutf=
+-8=22>
+<meta name=3D=22viewport=22 content=3D=22width=3Ddevice-width, initial-scal=
+e=3D1=22>
+<title>REI</title>
+<style>
+  div,button =7B display: block =21important; =7D
+  /* Force hotmail/outlook=2Ecom to display at full width (outer div) */
+  =2EReadMsgBody =7B width:100%; =7D
+  /* Force hotmail/outlook=2Ecom to display at full width (inner div) */      =
+=09
+  =2EExternalClass =7B width:100%; =7D=20
+  /* Stop Wekbit and Windows Phone changing the font size */
+  body =7B width:100% =21important; -webkit-text-size-adjust:100%; -ms-text-=
+size-adjust:100%; margin:0; padding:0; =7D =20
+  /* Outlook Background Image Fix */
+  v:* =7B behavior: url(=23default=23VML); display: block; =7D=20
+  /* iOS Links - Prevent color of certain content being changed (ie: dates/t=
+imes) */
+  a=5Bx-apple-data-detectors=5D =7B
+    color: inherit =21important;
+    text-decoration: none =21important;
+    font-size: inherit =21important;
+    font-family: inherit =21important;
+    font-weight: inherit =21important;
+    line-height: inherit =21important;
+  =7D
+
+</style>  =09
+<style>
+
+  =2Egmailfix =7Bdisplay:none; display:none =21important;=7D
+
+  =40media screen and (max-width: 600px)=7B
+=09
+  /*GENERAL*/
+  =2Ehide =7B display:none =21important; =7D
+  =2Eshow =7Bdisplay: block =21important; width: auto =21important; overflow=
+: visible =21important; float: none =21important; max-height: inherit =21im=
+portant; line-height: inherit =21important;=7D
+  =2Eshow_inline =7Bdisplay: inline =21important; width: auto =21important; =
+overflow: visible =21important; float: none =21important; max-height: inher=
+it =21important; line-height: inherit =21important;=7D
+  =2Eblock =7B display:block =21important; =7D
+  =2Ehauto=7B height:auto =21important; =7D
+  =2Ewauto=7B width:auto =21important; =7D
+  =2Emargina=7B margin:auto =21important; =7D
+  =2Eheight0=7B height:0px =21important; =7D
+  =2Ewidth370=7B width:370px =21important; =7D
+  =2Ewidth350 =7B width:350px =21important; =7D
+
+
+  /*PREHEADER*/
+  =2Ewidth10 =7B width: 10px =21important; =7D
+  =2Ewidth250 =7B width: 250px =21important; =7D
+  =2Elh7 =7B line-height:7px =21important; =7D
+  =2Elh9 =7B line-height:9px =21important; =7D
+  =2Elh12 =7B line-height:12px =21important; =7D
+  =2Efont10 =7B font-size:10px =21important; =7D
+
+  /*HERO_A*/
+  =2Ewidth200 =7B width:200px =21important; =7D
+  =2Ewidth330 =7B width:330px =21important; =7D
+  =2Eheight44 =7B height:44px =21important; =7D
+  =2Eheight65 =7B height:65px =21important; =7D
+  =2Efont10 =7B font-size:10px =21important; =7D
+  =2Efont13 =7B font-size:13px =21important; =7D
+  =2Efont14 =7B font-size:14px =21important; =7D
+  =2Elh16 =7B line-height:16px =21important; =7D
+  =2Elh20 =7B line-height:20px =21important; =7D
+  =2Elh32 =7B line-height:32px =21important; =7D
+  =2Elh55 =7B line-height:55px =21important; =7D
+  =2Epadding15_0_13 =7B padding:15px 0 13px =21important;=7D
+
+  /*BODY_STYLES*/
+  =2Ewidth10 =7B width:10px =21important; =7D
+  =2Ewidth157 =7B width:157px =21important; =7D
+  =2Ewidth175 =7B width:175px =21important; =7D
+  =2Ewidth185 =7B width:185px =21important; =7D
+  =2Eheight36 =7B height:36px =21important; =7D
+  =2Eheight44 =7B height:44px =21important; =7D
+  =2Efont13 =7B font-size:13px =21important; =7D
+  =2Elh15 =7B line-height:15px =21important; =7D
+  =2Elh36 =7B line-height:36px =21important; =7D
+  =2Epadding15_0_14 =7B padding:15px 0 14px =21important;=7D
+
+  /*BANNER_STYLES*/
+
+
+  /*FOOTER_NAVIGATION*/
+  =2Efont9=7B font-size:9px =21important; =7D
+  =2Elh14=7B line-height:14px =21important; =7D
+  =2Elh15=7B line-height:15px =21important; =7D
+  =2Elh16=7B line-height:16px =21important; =7D
+  =2Elh22=7B line-height:22px =21important; =7D
+=7D
+</style>
+</head>
+
+<body width=3D=22100%=22 style=3D=22padding:0; margin:0 auto;=22><table cel=
+lpadding=3D=220=22 cellspacing=3D=220=22 style=3D=22border: 0px; padding: 0=
+px; margin: 0px; position: absolute; display: none; float: left=22>
+<tr>
+<td height=3D=221=22 style=3D=22font-size: 1px; line-height: 1px; padding: =
+0px;=22>
+<img src=3D=22https://notices=2Erei=2Ecom/pub/as?_ri_=3DX0Gzc2X%3DYQpglLjHJ=
+lYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1uW=
+VXHkMX%3Dw&_ei_=3DEopaoqASqentiB8Ja6uo-i5L6DvuzfERx6LN3eQRGTVR29PplcJWU2dpR=
+8hH2q8s2Gk3rcz7nUEzaCANo07UW8q4woA6Yd8x_mh_9keIEJFDicXKsEcj8ZDaVIdJFof2gReu=
+b5RH7Wp1lE9H=2E=22></img>
+</td>
+</tr>
+</table>
+
+
+<=21--=5Bif gte mso 9=5D>
+<style type=3D=22text/css=22>
+body, table, td =7Bfont-family: Arial, Helvetica, sans-serif =21important;=
+=7D
+=2Elhfix=7B mso-line-height-rule: exactly;=7D
+=2EsupFix=7B mso-text-raise: 60%;=7D
+</style>
+<=21=5Bendif=5D-->
+
+<=21-- MI PIXEL -->
+<table cellpadding=3D=220=22 cellspacing=3D=220=22><tr><td height=3D=221=22=
+ style=3D=22line-height:1px;=22 class=3D=22height0=22><img src=3D=22http://=
+mi=2Erei=2Ecom/p/up/c464d06f2d911588347b8422a91761d9/o=2Egif?mi_u=3D2761019=
+15&mi_ecmp=3D20180615_GAR_June20Off100=22 width=3D=221=22 height=3D=221=22 =
+style=3D=22display:block; border:0;=22/></td></tr></table>
+<=21-- /MI PIXEL -->
+
+<=21--EMAIL_CONTAINER-->
+<table width=3D=22100%=22 cellpadding=3D=220=22 cellspacing=3D=220=22>
+<tr>
+<td width=3D=22100%=22 align=3D=22center=22 valign=3D=22top=22 bgcolor=3D=
+=22=23ffffff=22>
+
+  <=21-- HEADER_CONTAINER -->
+  <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+  <tr>
+  <td width=3D=22740=22 align=3D=22center=22 valign=3D=22top=22 class=3D=22w=
+idth370=22>
+
+    <=21--PREHEADER-->
+    <div style=3D=22line-height:29px;=22 class=3D=22lhfix lh9=22>&nbsp;</di=
+v>
+    <table width=3D=22100%=22 cellpadding=3D=220=22 cellspacing=3D=220=22>
+    <tr>
+    <td width=3D=2224=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+    <td width=3D=22540=22 align=3D=22left=22 valign=3D=22top=22 style=3D=22ve=
+rtical-align:top;=22 class=3D=22width250=22>
+      <div style=3D=22font-size:14px; font-family:Arial, Verdana, Arial; color=
+:=23999999; line-height:15px;=22 class=3D=22font10=22>
+        <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpglL=
+jHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu=
+1uWVXtpKX%3DSRSAABWB&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59SR=
+bZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmvMa=
+il1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_vSQ=
+zdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQwT=
+0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUIGj=
+br0=2E=22 style=3D=22color:=23999999; line-height:18px; text-decoration:und=
+erline;=22 class=3D=22lh12=22>Act fast, this great deal only lasts thru 6/2=
+1</a>
+      </div>
+    </td>
+    <td align=3D=22right=22 valign=3D=22top=22 style=3D=22vertical-align:top;=
+=22>
+    </td>  =20
+    <td width=3D=2224=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+    </tr>
+    </table>
+    <div data-content-region-name=3D=22Region1=22 style=3D=22line-height:16=
+px;=22 class=3D=22lhfix lh7=22>
+
+</div>
+    <=21--/PREHEADER-->
+ =20
+  <=21-- RI PIXEL -->
+  <table cellpadding=3D=220=22 cellspacing=3D=220=22><tr><td height=3D=221=
+=22 style=3D=22line-height:1px;=22 class=3D=22height0=22><img src=3D=22http=
+://pixel=2Emonitor1=2Ereturnpath=2Enet/pixel=2Egif?r=3Df805164057052e6ab43c=
+812a8cd8350ea5103882&c=3Dgm_061518&campaign=3Dgm_061518=22 width=3D=221=22 =
+height=3D=221=22 style=3D=22display:block; border:0;=22/></td></tr></table>
+  <=21-- /RI PIXEL -->
+
+    <table width=3D=22100%=22 cellpadding=3D=220=22 cellspacing=3D=220=22><t=
+r><td width=3D=22100%=22 height=3D=221=22 bgcolor=3D=22=23acacac=22 style=
+=3D=22line-height:1px;=22><div style=3D=22height:1px;line-height:1px;=22><i=
+mg src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/c=
+ontentlibrary/promo_/2018/06/0615_gar_june20off100/images/spcr=2Egif=22 hei=
+ght=3D=221=22 width=3D=221=22 border=3D=220=22 style=3D=22display:block;=22=
+ /></div></td></tr></table>
+
+  <=21--HEADER_1_BLUE-->
+  <table cellpadding=3D=220=22 cellspacing=3D=220=22><tr><td>
+
+  <div class=3D=22hide=22><a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_r=
+i_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzf=
+ifGwWygDOy8XLzezezciu1uWVXtpKX%3DSRSAABWC&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJ=
+zayJWmYyVq2WSIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6nt=
+paygSfZh6tT9yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxran=
+XylqN4TrwzaAesMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2e=
+R2DHZijVBxkAjABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVH=
+wwpzmQ8_m7asXdbJSUIGjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Erespons=
+ys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june=
+20off100/images/shell_gar_outlet_logo=2Epng=22 width=3D=22700=22 height=3D=
+=22119=22 border=3D=220=22 alt=3D=22REI OUTLET&trade; The gear you love for=
+ less=2E=22 style=3D=22display:block; border:0; font-family:Helvetica, Aria=
+l, sans-serif; font-size:44px; line-height:119px; color:=2301708c; font-wei=
+ght:bold;=22 class=3D=22lhfix=22/></a></div>
+=09
+  <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22display:no=
+ne; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=22>
+    <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpglLjH=
+JlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1u=
+WVXtpKX%3DSRSAABWD&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59SRbZ=
+CPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmvMail=
+1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_vSQzd=
+Hyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQwT0Q=
+xT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUIGjbr=
+0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsysim=
+ages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/shell_g=
+ar_outlet_logo_m=2Epng=22 width=3D=22350=22 height=3D=2280=22 border=3D=220=
+=22 alt=3D=22REI OUTLET&trade; The gear you love for less=2E=22 style=3D=22=
+display:block; border:0; font-family:Helvetica, Arial, sans-serif; font-siz=
+e:44px; line-height:80px; color:=2301708c; font-weight:bold;=22/></a>
+  </div><=21--<=21=5Bendif=5D-->
+
+  </td></tr></table>
+  <=21--/HEADER_1_BLUE-->
+
+  </td>
+  </tr>
+  </table>
+  <=21-- END HEADER_CONTAINER -->
+
+  <=21-- HERO_CONTAINER -->
+  <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+  <tr>
+  <td width=3D=22740=22 align=3D=22center=22 valign=3D=22top=22 class=3D=22w=
+idth370=22>
+
+  <=21--HERO_A-->
+  <table cellpadding=3D=220=22 cellspacing=3D=220=22><tr><td width=3D=22700=
+=22 align=3D=22center=22 valign=3D=22top=22 bgcolor=3D=22=2301708c=22 class=
+=3D=22width350=22>
+
+    <div class=3D=22hide=22><a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_=
+ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dz=
+fifGwWygDOy8XLzezezciu1uWVXtpKX%3DSRSAABYR&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSe=
+JzayJWmYyVq2WSIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6n=
+tpaygSfZh6tT9yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxra=
+nXylqN4TrwzaAesMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2=
+eR2DHZijVBxkAjABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszV=
+HwwpzmQ8_m7asXdbJSUIGjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Erespon=
+sys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018/06/0615_gar_jun=
+e20off100/images/_hero_tle=2Epng=22 width=3D=22700=22 height=3D=22350=22 bo=
+rder=3D=220=22 alt=3D=22=2420 OFF when you spend =24100 or more thru 6/21=
+=2E=22 style=3D=22display:block; border:0; font-family:Helvetica, Arial, sa=
+ns-serif; font-size:70px; line-height:90px; color:=23ffffff; font-weight:bo=
+ld;=22 /></a></div>
+    <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22display:n=
+one; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=22>
+      <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpglLj=
+HJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1=
+uWVXtpKX%3DSRSAABYR&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59SRb=
+ZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmvMai=
+l1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_vSQz=
+dHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQwT0=
+QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUIGjb=
+r0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsysi=
+mages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_hero_=
+tle_m=2Epng=22 width=3D=22350=22 border=3D=220=22 alt=3D=22=2420 OFF when y=
+ou spend =24100 or more thru 6/21=2E=22 style=3D=22display:block; border:0;=
+ font-family:Helvetica, Arial, sans-serif; font-size:40px; line-height:50px=
+; color:=23ffffff; font-weight:bold;=22 class=3D=22hauto=22 height=3D=22350=
+=22/></a>
+    </div><=21--<=21=5Bendif=5D-->
+    <div style=3D=22line-height:60px;=22 class=3D=22lhfix lh7=22>&nbsp;</div>
+    <table cellpadding=3D=220=22 cellspacing=3D=220=22><tr><td width=3D=22580=
+=22 align=3D=22center=22 valign=3D=22top=22 class=3D=22width330=22>
+      <div style=3D=22font-family:Helvetica, Arial, sans-serif; font-size:22px=
+; line-height:40px; color:=23ffffff; font-weight:normal;=22 class=3D=22lhfi=
+x font14 lh20=22>Discount applied at checkout=2E Online only=2E<br/><a href=
+=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4v=
+JHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1uWVXtpKX%3=
+DSRSAABYS&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG05F=
+D8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmvMail1hfBUWJZ5=
+9jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_vSQzdHyz1KDxie=
+uRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQwT0QxT_ljwHUb=
+WRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22 s=
+tyle=3D=22color: =23ffffff;=22>Terms and conditions apply=2E</a></div>
+    </td></tr></table>
+    <div style=3D=22line-height:115px;=22 class=3D=22lhfix lh55=22>&nbsp;</di=
+v>
+
+    <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+    <tr>
+      <td width=3D=22350=22 height=3D=2260=22 align=3D=22center=22 valign=3D=
+=22middle=22 style=3D=22background-color:=23ffffff; color:=23696969; vertic=
+al-align:middle;=22 class=3D=22width200 height44=22>
+          <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQ=
+pglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzeze=
+zciu1uWVXtpKX%3DSRSAABYT&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD=
+59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCIm=
+mvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol=
+_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIU=
+tQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJS=
+UIGjbr0=2E=22 style=3D=22background-color:=23ffffff; color:=23696969; displ=
+ay:inline-block; font-family:Helvetica, Arial, sans-serif; font-size:24px; =
+font-weight:bold; line-height:26px; text-align:center; text-decoration:none=
+;=22 class=3D=22font13 lh16=22>
+              START SHOPPING
+          </a>
+      </td>
+    </tr>
+    </table>
+
+    <div style=3D=22line-height:120px;=22 class=3D=22lhfix height65=22>&nbsp;=
+</div>
+
+  </td></tr></table>
+  <=21--/HERO_A-->
+
+  </td>
+  </tr>
+  </table>
+  <=21-- END HERO_CONTAINER -->
+
+  <=21-- BODY_CONTAINER -->
+  <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+  <tr>
+  <td width=3D=22740=22 align=3D=22center=22 valign=3D=22top=22 class=3D=22w=
+idth370=22>
+
+  <=21--BODY_3_MOD_A-->
+  <table width=3D=22100%=22 cellpadding=3D=220=22 cellspacing=3D=220=22>
+  <tr><td colspan=3D=223=22 height=3D=2260=22 style=3D=22line-height:1px;=22=
+ class=3D=22height36=22><div style=3D=22height:1px;line-height:1px;=22><img=
+ src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/con=
+tentlibrary/promo_/2018/06/0615_gar_june20off100/images/spcr=2Egif=22 heigh=
+t=3D=221=22 width=3D=221=22 border=3D=220=22 style=3D=22display:block;=22 /=
+></div></td></tr>
+  <tr>
+    <td colspan=3D=222=22 align=3D=22left=22 style=3D=22line-height:1px;=22>
+
+      <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+      <tr>
+        <td width=3D=22370=22 align=3D=22left=22 valign=3D=22top=22 style=3D=22=
+line-height:1px;=22 class=3D=22width185=22>
+          <div class=3D=22hide=22><a href=3D=22https://notices=2Erei=2Ecom/pub/c=
+c?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce=
+9dzfifGwWygDOy8XLzezezciu1uWVXtpKX%3DSRSAABYU&amp;_ei_=3DEiPBiNWveF3V3xrqf9=
+SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1G=
+U6ntpaygSfZh6tT9yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JP=
+xranXylqN4TrwzaAesMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9RO=
+Ch2eR2DHZijVBxkAjABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98S=
+szVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eres=
+ponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018/06/0615_gar_=
+june20off100/images/_prod_1_img=2Ejpg=22 width=3D=22312=22 height=3D=22272=
+=22 border=3D=220=22 alt=3D=22=22 style=3D=22display:block;=22 /></a></div>
+          <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22displa=
+y:none; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=
+=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABYU&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_1_img_m=2Ejpg=22 width=3D=22174=22 height=3D=22170=22 border=3D=220=22 a=
+lt=3D=22=22 style=3D=22display:block;=22 /></a>
+          </div><=21--<=21=5Bendif=5D-->
+        </td>
+        <td width=3D=22350=22 align=3D=22left=22 valign=3D=22top=22 style=3D=22=
+line-height:1px;=22 class=3D=22width175=22>
+          <div class=3D=22hide=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABYW&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_1_tle=2Ejpg=22 width=3D=22312=22 height=3D=2246=22 border=3D=220=22 alt=
+=3D=22MARMOT=22 style=3D=22display:block;=22 /></a>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABYY&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_1_copy=2Ejpg=22 width=3D=22312=22 height=3D=22165=22 border=3D=220=22 al=
+t=3D=22Better gear=2E Responsibly sourced=2E=22 style=3D=22display:block;=
+=22 /></a>
+          </div>
+          <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22displa=
+y:none; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=
+=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABYW&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_1_tle_m=2Ejpg=22 width=3D=22175=22 height=3D=2235=22 border=3D=220=22 al=
+t=3D=22MARMOT=22 style=3D=22display:block;=22 /></a>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABYY&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_1_copy_m=2Ejpg=22 width=3D=22175=22 height=3D=2284=22 border=3D=220=22 a=
+lt=3D=22Better gear=2E Responsibly sourced=2E=22 style=3D=22display:block;=
+=22 /></a>
+          </div><=21--<=21=5Bendif=5D-->
+
+          <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+          <tr>
+              <td width=3D=22315=22 height=3D=2260=22 align=3D=22center=22 style=
+=3D=22background-color:=2301708c; color:=23ffffff=22 class=3D=22width157 he=
+ight44=22>
+                  <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X=
+%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8X=
+Lzezezciu1uWVXtpKX%3DSRSAABYA&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2W=
+SIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9=
+yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaA=
+esMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkA=
+jABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7as=
+XdbJSUIGjbr0=2E=22 style=3D=22background-color:=2301708c; color:=23ffffff; =
+display:inline-block; font-family:Arial, Helvetica, sans-serif; font-size:2=
+4px; font-weight:bold; line-height:26px; text-align:center; text-decoration=
+:none;=22 class=3D=22font13 lh15=22>
+                      SHOP MARMOT
+                  </a>
+              </td>
+          </tr>
+          </table>
+        </td>
+      </tr>
+      </table>
+      <div style=3D=22line-height:60px;=22 class=3D=22lhfix lh36=22>&nbsp;</di=
+v>
+
+    </td>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+  </tr>
+  <tr>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+    <td width=3D=22740=22 class=3D=22width350=22 bgcolor=3D=22=23808080=22 st=
+yle=3D=22line-height:1px;=22><img src=3D=22https://static=2Ecdn=2Eresponsys=
+=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20=
+off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=221=22 border=3D=220=
+=22 style=3D=22display:block;=22 /></td>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+  </tr>
+  </table>
+  <=21--/BODY_3_MOD_A-->
+
+  <=21--BODY_3_MOD_B-->
+  <table width=3D=22100%=22 cellpadding=3D=220=22 cellspacing=3D=220=22>
+  <tr><td colspan=3D=223=22 height=3D=2260=22 style=3D=22line-height:1px;=22=
+ class=3D=22height36=22><div style=3D=22height:1px;line-height:1px;=22><img=
+ src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/con=
+tentlibrary/promo_/2018/06/0615_gar_june20off100/images/spcr=2Egif=22 heigh=
+t=3D=221=22 width=3D=221=22 border=3D=220=22 style=3D=22display:block;=22 /=
+></div></td></tr>
+  <tr>
+    <td colspan=3D=222=22 align=3D=22left=22 style=3D=22line-height:1px;=22>
+
+      <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+      <tr>
+        <td width=3D=22370=22 align=3D=22left=22 valign=3D=22top=22 style=3D=22=
+line-height:1px;=22 class=3D=22width185=22>
+          <div class=3D=22hide=22><a href=3D=22https://notices=2Erei=2Ecom/pub/c=
+c?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce=
+9dzfifGwWygDOy8XLzezezciu1uWVXtpKX%3DSRSAABYB&amp;_ei_=3DEiPBiNWveF3V3xrqf9=
+SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1G=
+U6ntpaygSfZh6tT9yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JP=
+xranXylqN4TrwzaAesMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9RO=
+Ch2eR2DHZijVBxkAjABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98S=
+szVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eres=
+ponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018/06/0615_gar_=
+june20off100/images/_prod_2_img=2Ejpg=22 width=3D=22312=22 height=3D=22272=
+=22 border=3D=220=22 alt=3D=22=22 style=3D=22display:block;=22 /></a></div>
+          <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22displa=
+y:none; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=
+=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABYB&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_2_img_m=2Ejpg=22 width=3D=22174=22 height=3D=22170=22 border=3D=220=22 a=
+lt=3D=22=22 style=3D=22display:block;=22 /></a>
+          </div><=21--<=21=5Bendif=5D-->
+        </td>
+        <td width=3D=22350=22 align=3D=22left=22 valign=3D=22top=22 style=3D=22=
+line-height:1px;=22 class=3D=22width175=22>
+          <div class=3D=22hide=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABYC&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_2_tle=2Ejpg=22 width=3D=22312=22 height=3D=2246=22 border=3D=220=22 alt=
+=3D=22SALOMON=22 style=3D=22display:block;=22 /></a>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABYD&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_2_copy=2Ejpg=22 width=3D=22328=22 height=3D=22164=22 border=3D=220=22 al=
+t=3D=22Boundary pushing=2E Mountain rooted=2E=22 style=3D=22display:block;=
+=22 /></a>
+          </div>
+          <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22displa=
+y:none; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=
+=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABYC&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_2_tle_m=2Ejpg=22 width=3D=22175=22 height=3D=2231=22 border=3D=220=22 al=
+t=3D=22SALOMON=22 style=3D=22display:block;=22 /></a>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABYD&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_2_copy_m=2Ejpg=22 width=3D=22175=22 height=3D=2288=22 border=3D=220=22 a=
+lt=3D=22Boundary pushing=2E Mountain rooted=2E=22 style=3D=22display:block;=
+=22 /></a>
+          </div><=21--<=21=5Bendif=5D-->
+
+          <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+          <tr>
+              <td width=3D=22315=22 height=3D=2260=22 align=3D=22center=22 style=
+=3D=22background-color:=2301708c; color:=23ffffff=22 class=3D=22width157 he=
+ight44=22>
+                  <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X=
+%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8X=
+Lzezezciu1uWVXtpKX%3DSRSAABAR&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2W=
+SIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9=
+yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaA=
+esMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkA=
+jABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7as=
+XdbJSUIGjbr0=2E=22 style=3D=22background-color:=2301708c; color:=23ffffff; =
+display:inline-block; font-family:Arial, Helvetica, sans-serif; font-size:2=
+4px; font-weight:bold; line-height:26px; text-align:center; text-decoration=
+:none;=22 class=3D=22font13 lh15=22>
+                      SHOP SALOMON
+                  </a>
+              </td>
+          </tr>
+          </table>
+        </td>
+      </tr>
+      </table>
+      <div style=3D=22line-height:60px;=22 class=3D=22lhfix lh32=22>&nbsp;</di=
+v>
+
+    </td>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+  </tr>
+  <tr>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+    <td width=3D=22740=22 class=3D=22width350=22 bgcolor=3D=22=23808080=22 st=
+yle=3D=22line-height:1px;=22><img src=3D=22https://static=2Ecdn=2Eresponsys=
+=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20=
+off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=221=22 border=3D=220=
+=22 style=3D=22display:block;=22 /></td>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+  </tr>
+  </table>
+  <=21--/BODY_3_MOD_B-->
+
+  <=21--BODY_3_MOD_C-->
+  <table width=3D=22100%=22 cellpadding=3D=220=22 cellspacing=3D=220=22>
+  <tr><td colspan=3D=223=22 height=3D=2260=22 style=3D=22line-height:1px;=22=
+ class=3D=22height36=22><div style=3D=22height:1px;line-height:1px;=22><img=
+ src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/con=
+tentlibrary/promo_/2018/06/0615_gar_june20off100/images/spcr=2Egif=22 heigh=
+t=3D=221=22 width=3D=221=22 border=3D=220=22 style=3D=22display:block;=22 /=
+></div></td></tr>
+  <tr>
+    <td colspan=3D=222=22 align=3D=22left=22 style=3D=22line-height:1px;=22>
+
+      <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+      <tr>
+        <td width=3D=22370=22 align=3D=22left=22 valign=3D=22top=22 style=3D=22=
+line-height:1px;=22 class=3D=22width185=22>
+          <div class=3D=22hide=22><a href=3D=22https://notices=2Erei=2Ecom/pub/c=
+c?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce=
+9dzfifGwWygDOy8XLzezezciu1uWVXtpKX%3DSRSAABAS&amp;_ei_=3DEiPBiNWveF3V3xrqf9=
+SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1G=
+U6ntpaygSfZh6tT9yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JP=
+xranXylqN4TrwzaAesMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9RO=
+Ch2eR2DHZijVBxkAjABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98S=
+szVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eres=
+ponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018/06/0615_gar_=
+june20off100/images/_prod_3_img=2Ejpg=22 width=3D=22312=22 height=3D=22272=
+=22 border=3D=220=22 alt=3D=22=22 style=3D=22display:block;=22 /></a></div>
+          <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22displa=
+y:none; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=
+=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABAS&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_3_img_m=2Ejpg=22 width=3D=22174=22 height=3D=22170=22 border=3D=220=22 a=
+lt=3D=22=22 style=3D=22display:block;=22 /></a>
+          </div><=21--<=21=5Bendif=5D-->
+        </td>
+        <td width=3D=22350=22 align=3D=22left=22 valign=3D=22top=22 style=3D=22=
+line-height:1px;=22 class=3D=22width175=22>
+          <div class=3D=22hide=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABAT&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_3_tle=2Ejpg=22 width=3D=22312=22 height=3D=2246=22 border=3D=220=22 alt=
+=3D=22CHACO=22 style=3D=22display:block;=22 /></a>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABAU&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_3_copy=2Ejpg=22 width=3D=22312=22 height=3D=22164=22 border=3D=220=22 al=
+t=3D=22Custom fit=2E Gecko-like grip=2E=22 style=3D=22display:block;=22 /><=
+/a>
+          </div>
+          <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22displa=
+y:none; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=
+=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABAT&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_3_tle_m=2Ejpg=22 width=3D=22175=22 height=3D=2234=22 border=3D=220=22 al=
+t=3D=22CHACO=22 style=3D=22display:block;=22 /></a>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABAU&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_3_copy_m=2Ejpg=22 width=3D=22175=22 height=3D=2284=22 border=3D=220=22 a=
+lt=3D=22Custom fit=2E Gecko-like grip=2E=22 style=3D=22display:block;=22 />=
+</a>
+          </div><=21--<=21=5Bendif=5D-->
+
+          <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+          <tr>
+              <td width=3D=22315=22 height=3D=2260=22 align=3D=22center=22 style=
+=3D=22background-color:=2301708c; color:=23ffffff=22 class=3D=22width157 he=
+ight44=22>
+                  <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X=
+%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8X=
+Lzezezciu1uWVXtpKX%3DSRSAABAW&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2W=
+SIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9=
+yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaA=
+esMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkA=
+jABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7as=
+XdbJSUIGjbr0=2E=22 style=3D=22background-color:=2301708c; color:=23ffffff; =
+display:inline-block; font-family:Arial, Helvetica, sans-serif; font-size:2=
+4px; font-weight:bold; line-height:26px; text-align:center; text-decoration=
+:none;=22 class=3D=22font13 lh15=22>
+                      SHOP CHACO
+                  </a>
+              </td>
+          </tr>
+          </table>
+        </td>
+      </tr>
+      </table>
+      <div style=3D=22line-height:60px;=22 class=3D=22lhfix lh36=22>&nbsp;</di=
+v>
+
+    </td>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+  </tr>
+  <tr>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+    <td width=3D=22740=22 class=3D=22width350=22 bgcolor=3D=22=23808080=22 st=
+yle=3D=22line-height:1px;=22><img src=3D=22https://static=2Ecdn=2Eresponsys=
+=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20=
+off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=221=22 border=3D=220=
+=22 style=3D=22display:block;=22 /></td>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+  </tr>
+  </table>
+  <=21--/BODY_3_MOD_C-->
+
+  <=21--BODY_3_MOD_D-->
+  <table width=3D=22100%=22 cellpadding=3D=220=22 cellspacing=3D=220=22>
+  <tr><td colspan=3D=223=22 height=3D=2260=22 style=3D=22line-height:1px;=22=
+ class=3D=22height36=22><div style=3D=22height:1px;line-height:1px;=22><img=
+ src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/con=
+tentlibrary/promo_/2018/06/0615_gar_june20off100/images/spcr=2Egif=22 heigh=
+t=3D=221=22 width=3D=221=22 border=3D=220=22 style=3D=22display:block;=22 /=
+></div></td></tr>
+  <tr>
+    <td colspan=3D=222=22 align=3D=22left=22 style=3D=22line-height:1px;=22>
+
+      <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+      <tr>
+        <td width=3D=22370=22 align=3D=22left=22 valign=3D=22top=22 style=3D=22=
+line-height:1px;=22 class=3D=22width185=22>
+          <div class=3D=22hide=22><a href=3D=22https://notices=2Erei=2Ecom/pub/c=
+c?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce=
+9dzfifGwWygDOy8XLzezezciu1uWVXtpKX%3DSRSAABAY&amp;_ei_=3DEiPBiNWveF3V3xrqf9=
+SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1G=
+U6ntpaygSfZh6tT9yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JP=
+xranXylqN4TrwzaAesMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9RO=
+Ch2eR2DHZijVBxkAjABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98S=
+szVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eres=
+ponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018/06/0615_gar_=
+june20off100/images/_prod_4_img=2Ejpg=22 width=3D=22314=22 height=3D=22272=
+=22 border=3D=220=22 alt=3D=22=22 style=3D=22display:block;=22 /></a></div>
+          <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22displa=
+y:none; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=
+=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABAY&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_4_img_m=2Ejpg=22 width=3D=22174=22 height=3D=22170=22 border=3D=220=22 a=
+lt=3D=22=22 style=3D=22display:block;=22 /></a>
+          </div><=21--<=21=5Bendif=5D-->
+        </td>
+        <td width=3D=22350=22 align=3D=22left=22 valign=3D=22top=22 style=3D=22=
+line-height:1px;=22 class=3D=22width175=22>
+          <div class=3D=22hide=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABAA&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_4_tle=2Ejpg=22 width=3D=22312=22 height=3D=2246=22 border=3D=220=22 alt=
+=3D=22KELTY=22 style=3D=22display:block;=22 /></a>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABAB&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_4_copy=2Ejpg=22 width=3D=22312=22 height=3D=22164=22 border=3D=220=22 al=
+t=3D=22Escape the mundane=2E=22 style=3D=22display:block;=22 /></a>
+          </div>
+          <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22displa=
+y:none; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=
+=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABAA&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_4_tle_m=2Ejpg=22 width=3D=22175=22 height=3D=2234=22 border=3D=220=22 al=
+t=3D=22KELTY=22 style=3D=22display:block;=22 /></a>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABAB&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_4_copy_m=2Ejpg=22 width=3D=22175=22 height=3D=2284=22 border=3D=220=22 a=
+lt=3D=22Escape the mundane=2E=22 style=3D=22display:block;=22 /></a>
+          </div><=21--<=21=5Bendif=5D-->
+
+          <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+          <tr>
+              <td width=3D=22315=22 height=3D=2260=22 align=3D=22center=22 style=
+=3D=22background-color:=2301708c; color:=23ffffff=22 class=3D=22width157 he=
+ight44=22>
+                  <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X=
+%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8X=
+Lzezezciu1uWVXtpKX%3DSRSAABAC&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2W=
+SIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9=
+yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaA=
+esMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkA=
+jABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7as=
+XdbJSUIGjbr0=2E=22 style=3D=22background-color:=2301708c; color:=23ffffff; =
+display:inline-block; font-family:Arial, Helvetica, sans-serif; font-size:2=
+4px; font-weight:bold; line-height:26px; text-align:center; text-decoration=
+:none;=22 class=3D=22font13 lh15=22>
+                      SHOP KELTY
+                  </a>
+              </td>
+          </tr>
+          </table>
+        </td>
+      </tr>
+      </table>
+      <div style=3D=22line-height:60px;=22 class=3D=22lhfix lh22=22>&nbsp;</di=
+v>
+
+    </td>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+  </tr>
+  <tr>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+    <td width=3D=22740=22 class=3D=22width350=22 bgcolor=3D=22=23808080=22 st=
+yle=3D=22line-height:1px;=22><img src=3D=22https://static=2Ecdn=2Eresponsys=
+=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20=
+off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=221=22 border=3D=220=
+=22 style=3D=22display:block;=22 /></td>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+  </tr>
+  </table>
+  <=21--/BODY_3_MOD_D-->
+
+  <=21--BODY_3_MOD_E-->
+  <table width=3D=22100%=22 cellpadding=3D=220=22 cellspacing=3D=220=22>
+  <tr><td colspan=3D=223=22 height=3D=2250=22 style=3D=22line-height:1px;=22=
+ class=3D=22height36=22><div style=3D=22height:1px;line-height:1px;=22><img=
+ src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/con=
+tentlibrary/promo_/2018/06/0615_gar_june20off100/images/spcr=2Egif=22 heigh=
+t=3D=221=22 width=3D=221=22 border=3D=220=22 style=3D=22display:block;=22 /=
+></div></td></tr>
+  <tr>
+    <td colspan=3D=222=22 align=3D=22left=22 style=3D=22line-height:1px;=22>
+
+      <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+      <tr>
+        <td width=3D=22370=22 align=3D=22left=22 valign=3D=22top=22 style=3D=22=
+line-height:1px;=22 class=3D=22width185=22>
+          <div class=3D=22hide=22><a href=3D=22https://notices=2Erei=2Ecom/pub/c=
+c?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce=
+9dzfifGwWygDOy8XLzezezciu1uWVXtpKX%3DSRSAABAD&amp;_ei_=3DEiPBiNWveF3V3xrqf9=
+SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1G=
+U6ntpaygSfZh6tT9yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JP=
+xranXylqN4TrwzaAesMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9RO=
+Ch2eR2DHZijVBxkAjABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98S=
+szVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eres=
+ponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018/06/0615_gar_=
+june20off100/images/_prod_5_img=2Ejpg=22 width=3D=22312=22 height=3D=22272=
+=22 border=3D=220=22 alt=3D=22=22 style=3D=22display:block;=22 /></a></div>
+          <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22displa=
+y:none; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=
+=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABAD&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_5_img_m=2Ejpg=22 width=3D=22174=22 height=3D=22170=22 border=3D=220=22 a=
+lt=3D=22=22 style=3D=22display:block;=22 /></a>
+          </div><=21--<=21=5Bendif=5D-->
+        </td>
+        <td width=3D=22350=22 align=3D=22left=22 valign=3D=22top=22 style=3D=22=
+line-height:1px;=22 class=3D=22width175=22>
+          <div class=3D=22hide=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABBR&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_5_tle=2Ejpg=22 width=3D=22312=22 height=3D=2246=22 border=3D=220=22 alt=
+=3D=22HYDRO FLASK=22 style=3D=22display:block;=22 /></a>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABBS&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_5_copy=2Ejpg=22 width=3D=22312=22 height=3D=22167=22 border=3D=220=22 al=
+t=3D=22Eat, drink, be insulated=2E=22 style=3D=22display:block;=22 /></a>
+          </div>
+          <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22displa=
+y:none; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=
+=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABBR&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_5_tle_m=2Ejpg=22 width=3D=22175=22 height=3D=2234=22 border=3D=220=22 al=
+t=3D=22HYDRO FLASK=22 style=3D=22display:block;=22 /></a>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABBS&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_5_copy_m=2Ejpg=22 width=3D=22175=22 height=3D=2284=22 border=3D=220=22 a=
+lt=3D=22Eat, drink, be insulated=2E=22 style=3D=22display:block;=22 /></a>
+          </div><=21--<=21=5Bendif=5D-->
+
+          <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+          <tr>
+              <td width=3D=22315=22 height=3D=2260=22 align=3D=22center=22 style=
+=3D=22background-color:=2301708c; color:=23ffffff=22 class=3D=22width157 he=
+ight44=22>
+                  <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X=
+%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8X=
+Lzezezciu1uWVXtpKX%3DSRSAABBT&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2W=
+SIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9=
+yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaA=
+esMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkA=
+jABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7as=
+XdbJSUIGjbr0=2E=22 style=3D=22background-color:=2301708c; color:=23ffffff; =
+display:inline-block; font-family:Arial, Helvetica, sans-serif; font-size:2=
+4px; font-weight:bold; line-height:26px; text-align:center; text-decoration=
+:none;=22 class=3D=22font13 lh15=22>
+                      SHOP HYDRO FLASK
+                  </a>
+              </td>
+          </tr>
+          </table>
+        </td>
+      </tr>
+      </table>
+      <div style=3D=22line-height:60px;=22 class=3D=22lhfix lh36=22>&nbsp;</di=
+v>
+
+    </td>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+  </tr>
+  <tr>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+    <td width=3D=22740=22 class=3D=22width350=22 bgcolor=3D=22=23808080=22 st=
+yle=3D=22line-height:1px;=22><img src=3D=22https://static=2Ecdn=2Eresponsys=
+=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20=
+off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=221=22 border=3D=220=
+=22 style=3D=22display:block;=22 /></td>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+  </tr>
+  </table>
+  <=21--/BODY_3_MOD_E-->
+  <=21--BODY_3_MOD_F-->
+  <table width=3D=22100%=22 cellpadding=3D=220=22 cellspacing=3D=220=22>
+  <tr><td colspan=3D=223=22 height=3D=2260=22 style=3D=22line-height:1px;=22=
+ class=3D=22height36=22><div style=3D=22height:1px;line-height:1px;=22><img=
+ src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/con=
+tentlibrary/promo_/2018/06/0615_gar_june20off100/images/spcr=2Egif=22 heigh=
+t=3D=221=22 width=3D=221=22 border=3D=220=22 style=3D=22display:block;=22 /=
+></div></td></tr>
+  <tr>
+    <td colspan=3D=222=22 align=3D=22left=22 style=3D=22line-height:1px;=22>
+
+      <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+      <tr>
+        <td width=3D=22370=22 align=3D=22left=22 valign=3D=22top=22 style=3D=22=
+line-height:1px;=22 class=3D=22width185=22>
+          <div class=3D=22hide=22><a href=3D=22https://notices=2Erei=2Ecom/pub/c=
+c?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce=
+9dzfifGwWygDOy8XLzezezciu1uWVXtpKX%3DSRSAABBU&amp;_ei_=3DEiPBiNWveF3V3xrqf9=
+SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1G=
+U6ntpaygSfZh6tT9yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JP=
+xranXylqN4TrwzaAesMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9RO=
+Ch2eR2DHZijVBxkAjABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98S=
+szVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eres=
+ponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018/06/0615_gar_=
+june20off100/images/_prod_6_img=2Ejpg=22 width=3D=22312=22 height=3D=22275=
+=22 border=3D=220=22 alt=3D=22=22 style=3D=22display:block;=22 /></a></div>
+          <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22displa=
+y:none; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=
+=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABBU&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_6_img_m=2Ejpg=22 width=3D=22159=22 height=3D=22170=22 border=3D=220=22 a=
+lt=3D=22=22 style=3D=22display:block;=22 /></a>
+          </div><=21--<=21=5Bendif=5D-->
+        </td>
+        <td width=3D=22350=22 align=3D=22left=22 valign=3D=22top=22 style=3D=22=
+line-height:1px;=22 class=3D=22width175=22>
+          <div class=3D=22hide=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABBW&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_6_tle=2Ejpg=22 width=3D=22312=22 height=3D=2246=22 border=3D=220=22 alt=
+=3D=22KUHL=22 style=3D=22display:block;=22 /></a>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABBW&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_6_copy=2Ejpg=22 width=3D=22312=22 height=3D=22164=22 border=3D=220=22 al=
+t=3D=22Dedicated to original thinking=2E=22 style=3D=22display:block;=22 />=
+</a>
+          </div>
+          <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22displa=
+y:none; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=
+=22>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABBW&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_6_tle_m=2Ejpg=22 width=3D=22175=22 height=3D=2232=22 border=3D=220=22 al=
+t=3D=22KUHL=22 style=3D=22display:block;=22 /></a>
+            <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABBW&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/_pr=
+od_6_copy_m=2Ejpg=22 width=3D=22175=22 height=3D=2286=22 border=3D=220=22 a=
+lt=3D=22Dedicated to original thinking=2E=22 style=3D=22display:block;=22 /=
+></a>
+          </div><=21--<=21=5Bendif=5D-->
+
+          <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+          <tr>
+              <td width=3D=22315=22 height=3D=2260=22 align=3D=22center=22 style=
+=3D=22background-color:=2301708c; color:=23ffffff=22 class=3D=22width157 he=
+ight44=22>
+                  <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X=
+%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8X=
+Lzezezciu1uWVXtpKX%3DSRSAABBA&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2W=
+SIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9=
+yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaA=
+esMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkA=
+jABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7as=
+XdbJSUIGjbr0=2E=22 style=3D=22background-color:=2301708c; color:=23ffffff; =
+display:inline-block; font-family:Arial, Helvetica, sans-serif; font-size:2=
+4px; font-weight:bold; line-height:26px; text-align:center; text-decoration=
+:none;=22 class=3D=22font13 lh15=22>
+                      SHOP KUHL
+                  </a>
+              </td>
+          </tr>
+          </table>
+        </td>
+      </tr>
+      </table>
+      <div style=3D=22line-height:60px;=22 class=3D=22lhfix lh36=22>&nbsp;</di=
+v>
+
+    </td>
+    <td width=3D=2220=22 style=3D=22line-height:1px;=22 class=3D=22width10=22=
+><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://stati=
+c=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_/2018=
+/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=3D=22=
+1=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+  </tr>
+  </table>
+  <=21--/BODY_3_MOD_F-->
+
+  </td>
+  </tr>
+  </table>
+  <=21-- END BODY_CONTAINER -->=20
+
+  <=21-- FOOTER_CONTAINER -->
+  <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+  <tr>
+  <td width=3D=22740=22 align=3D=22center=22 valign=3D=22top=22 class=3D=22w=
+idth370=22>
+
+  <=21--FOOTER_NAVIGATION-->
+  <div class=3D=22hide=22>
+    <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+    <tr><td colspan=3D=223=22 height=3D=223=22 bgcolor=3D=22=23c3c3c3=22 styl=
+e=3D=22line-height:1px;=22><div style=3D=22height:1px;line-height:1px;=22><=
+img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/=
+contentlibrary/promo_/2018/06/0615_gar_june20off100/images/spcr=2Egif=22 he=
+ight=3D=221=22 width=3D=221=22 border=3D=220=22 style=3D=22display:block;=
+=22 /></div></td></tr>
+    <tr>
+        <td width=3D=22368=22 align=3D=22center=22 valign=3D=22top=22 style=3D=
+=22line-height:1px;=22>
+          <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABBB&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/she=
+ll_foot_women=2Epng=22 width=3D=22368=22 height=3D=2270=22 border=3D=220=22=
+ alt=3D=22Women=22 style=3D=22display:block; border:0; font-family:; font-s=
+ize:22px; line-height:70px; color:=23696969;=22 /></a>
+        </td>
+        <td width=3D=223=22 bgcolor=3D=22=23c3c3c3=22 style=3D=22line-height:1=
+px;=22><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https:/=
+/static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo=
+_/2018/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=
+=3D=221=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+        <td width=3D=22369=22 align=3D=22center=22 valign=3D=22top=22 style=3D=
+=22line-height:1px;=22>
+          <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABBC&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/she=
+ll_foot_men=2Epng=22 width=3D=22369=22 height=3D=2270=22 border=3D=220=22 a=
+lt=3D=22Men=22 style=3D=22display:block; border:0; font-family:; font-size:=
+22px; line-height:70px; color:=23696969;=22 /></a>
+        </td>
+    </tr>
+    </table>
+    <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+    <tr><td colspan=3D=225=22 height=3D=223=22 bgcolor=3D=22=23c3c3c3=22 styl=
+e=3D=22line-height:1px;=22><div style=3D=22height:1px;line-height:1px;=22><=
+img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/=
+contentlibrary/promo_/2018/06/0615_gar_june20off100/images/spcr=2Egif=22 he=
+ight=3D=221=22 width=3D=221=22 border=3D=220=22 style=3D=22display:block;=
+=22 /></div></td></tr>
+    <tr>
+      <td width=3D=22235=22 align=3D=22center=22 valign=3D=22top=22 style=3D=
+=22line-height:1px;=22>
+        <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpgl=
+LjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezci=
+u1uWVXtpKX%3DSRSAABBD&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59S=
+RbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmvM=
+ail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_vS=
+QzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQw=
+T0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUIG=
+jbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsy=
+simages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/shel=
+l_foot_kids=2Epng=22 width=3D=22235=22 height=3D=2270=22 border=3D=220=22 a=
+lt=3D=22Kids=22 style=3D=22display:block; border:0; font-family:; font-size=
+:22px; line-height:70px; color:=23696969;=22 /></a>
+      </td>
+      <td width=3D=223=22 bgcolor=3D=22=23c3c3c3=22 style=3D=22line-height:1p=
+x;=22><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://=
+static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_=
+/2018/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=
+=3D=221=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+      <td width=3D=22260=22 align=3D=22center=22 valign=3D=22top=22 style=3D=
+=22line-height:1px;=22>
+        <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpgl=
+LjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezci=
+u1uWVXtpKX%3DSRSAABCR&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59S=
+RbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmvM=
+ail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_vS=
+QzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQw=
+T0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUIG=
+jbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsy=
+simages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/shel=
+l_foot_footwear=2Epng=22 width=3D=22260=22 height=3D=2270=22 border=3D=220=
+=22 alt=3D=22Footwear=22 style=3D=22display:block; border:0; font-family:; =
+font-size:22px; line-height:70px; color:=23696969;=22 /></a>
+      </td>
+      <td width=3D=223=22 bgcolor=3D=22=23c3c3c3=22 style=3D=22line-height:1p=
+x;=22><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https://=
+static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo_=
+/2018/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=
+=3D=221=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+      <td width=3D=22239=22 align=3D=22center=22 valign=3D=22top=22 style=3D=
+=22line-height:1px;=22>
+        <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpgl=
+LjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezci=
+u1uWVXtpKX%3DSRSAABCS&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59S=
+RbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmvM=
+ail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_vS=
+QzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQw=
+T0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUIG=
+jbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsy=
+simages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/shel=
+l_foot_campnhike=2Epng=22 width=3D=22239=22 height=3D=2270=22 border=3D=220=
+=22 alt=3D=22Camp &amp; Hike=22 style=3D=22display:block; border:0; font-fa=
+mily:; font-size:22px; line-height:70px; color:=23696969;=22 /></a>
+      </td>
+      </tr>
+      </table>
+    <table cellpadding=3D=220=22 cellspacing=3D=220=22><tr><td width=3D=22740=
+=22 align=3D=22center=22 valign=3D=22top=22 bgcolor=3D=22=23cccccc=22><a hr=
+ef=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd=
+4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1uWVXtpKX=
+%3DSRSAABCB&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG0=
+5FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmvMail1hfBUWJ=
+Z59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_vSQzdHyz1KDx=
+ieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQwT0QxT_ljwH=
+UbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22=
+><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/re=
+i/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/shell_rei_co-o=
+p=2Epng=22 width=3D=22740=22 height=3D=2267=22 border=3D=220=22 alt=3D=22RE=
+I Co-op=22 style=3D=22display:block; border:0; font-family:; font-size:22px=
+; line-height:70px; color:=23000000;=22 /></a></td></tr></table>
+  </div>
+  <=21--=5Bif =21mso=5D><=21--><div class=3D=22show=22 style=3D=22display:no=
+ne; float:left; overflow:hidden; width:0; max-height:0; line-height:0;=22>
+    <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+    <tr><td colspan=3D=223=22 height=3D=222=22 bgcolor=3D=22=23c3c3c3=22 styl=
+e=3D=22line-height:1px;=22><div style=3D=22height:1px;line-height:1px;=22><=
+img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/=
+contentlibrary/promo_/2018/06/0615_gar_june20off100/images/spcr=2Egif=22 he=
+ight=3D=221=22 width=3D=221=22 border=3D=220=22 style=3D=22display:block;=
+=22 /></div></td></tr>
+    <tr>
+        <td width=3D=22184=22 align=3D=22center=22 valign=3D=22top=22 style=3D=
+=22line-height:1px;=22>
+          <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABBB&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/she=
+ll_foot_womenm=2Epng=22 width=3D=22184=22 border=3D=220=22 alt=3D=22Women=
+=22 style=3D=22display:block; border:0; font-family:; font-size:15px; line-=
+height:50px; color:=23696969;=22 class=3D=22hauto=22/></a>
+        </td>
+        <td width=3D=222=22 bgcolor=3D=22=23c3c3c3=22 style=3D=22line-height:1=
+px;=22><div style=3D=22height:1px;line-height:1px;=22><img src=3D=22https:/=
+/static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/promo=
+_/2018/06/0615_gar_june20off100/images/spcr=2Egif=22 height=3D=221=22 width=
+=3D=221=22 border=3D=220=22 style=3D=22display:block;=22 /></div></td>
+        <td width=3D=22184=22 align=3D=22center=22 valign=3D=22top=22 style=3D=
+=22line-height:1px;=22>
+          <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpg=
+lLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezc=
+iu1uWVXtpKX%3DSRSAABBC&amp;_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59=
+SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmv=
+Mail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_v=
+SQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQ=
+wT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUI=
+Gjbr0=2E=22><img src=3D=22https://static=2Ecdn=2Eresponsys=2Enet/i5/respons=
+ysimages/rei/contentlibrary/promo_/2018/06/0615_gar_june20off100/images/she=
+ll_foot_menm=2Epng=22 width=3D=22184=22 border=3D=220=22 alt=3D=22Men=22 st=
+yle=3D=22display:block; border:0; font-family:; font-size:15px; line-height=
+:50px; color:=23696969;=22 class=3D=22hauto=22/></a>
+        </td>
+    </tr>
+    </table>
+    <div style=3D=22border-top: 2px solid =23c3c3c3;=22><a href=3D=22https://=
+notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsD=
+kzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1uWVXtpKX%3DSRSAABBD&amp;=
+_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_=
+qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmvMail1hfBUWJZ59jb40q81R_jnMG=
+Q0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_vSQzdHyz1KDxieuRdlGTXHSmRxfH=
+lHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l=
+00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22><img src=3D=22h=
+ttps://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary=
+/promo_/2018/06/0615_gar_june20off100/images/shell_foot_kidsm=2Epng=22 widt=
+h=3D=22370=22 border=3D=220=22 alt=3D=22Kids=22 style=3D=22display:block; b=
+order:0; font-family:; font-size:15px; line-height:50px; color:=23696969;=
+=22 class=3D=22hauto=22/></a></div>
+    <div style=3D=22border-top: 2px solid =23c3c3c3;=22><a href=3D=22https://=
+notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsD=
+kzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1uWVXtpKX%3DSRSAABCR&amp;=
+_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_=
+qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmvMail1hfBUWJZ59jb40q81R_jnMG=
+Q0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_vSQzdHyz1KDxieuRdlGTXHSmRxfH=
+lHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l=
+00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22><img src=3D=22h=
+ttps://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary=
+/promo_/2018/06/0615_gar_june20off100/images/shell_foot_footwearm=2Epng=22 =
+width=3D=22370=22 border=3D=220=22 alt=3D=22Footwear=22 style=3D=22display:=
+block; border:0; font-family:; font-size:15px; line-height:50px; color:=236=
+96969;=22 class=3D=22hauto=22/></a></div>
+    <div style=3D=22border-top: 2px solid =23c3c3c3;=22><a href=3D=22https://=
+notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsD=
+kzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1uWVXtpKX%3DSRSAABCS&amp;=
+_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_=
+qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmvMail1hfBUWJZ59jb40q81R_jnMG=
+Q0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_vSQzdHyz1KDxieuRdlGTXHSmRxfH=
+lHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l=
+00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22><img src=3D=22h=
+ttps://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary=
+/promo_/2018/06/0615_gar_june20off100/images/shell_foot_campnhikem=2Epng=22=
+ width=3D=22370=22 border=3D=220=22 alt=3D=22Camp &amp; Hike=22 style=3D=22=
+display:block; border:0; font-family:; font-size:15px; line-height:50px; co=
+lor:=23696969;=22 class=3D=22hauto=22/></a></div>
+    <div style=3D=22background-color: =23cccccc;=22><a href=3D=22https://noti=
+ces=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbz=
+dzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1uWVXtpKX%3DSRSAABCB&amp;_ei_=
+=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7=
+FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wG=
+MDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX=
+1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG=
+9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22><img src=3D=22https=
+://static=2Ecdn=2Eresponsys=2Enet/i5/responsysimages/rei/contentlibrary/pro=
+mo_/2018/06/0615_gar_june20off100/images/shell_foot_rei_co-opm=2Epng=22 wid=
+th=3D=22370=22 border=3D=220=22 alt=3D=22REI Co-op=22 style=3D=22display:bl=
+ock; border:0; font-family:; font-size:15px; line-height:50px; color:=23000=
+000;=22 class=3D=22hauto=22/></a></div>
+  </div><=21--<=21=5Bendif=5D-->
+  <=21--/FOOTER_NAVIGATION-->
+  <div style=3D=22line-height:38px;=22 class=3D=22lhfix lh22=22>&nbsp;</div>
+
+  <=21--DISCLAIMER-->
+  <table cellpadding=3D=220=22 cellspacing=3D=220=22><tr><td width=3D=22740=
+=22 align=3D=22center=22 valign=3D=22top=22 class=3D=22width375=22>
+
+      <table cellpadding=3D=220=22 cellspacing=3D=220=22>
+      <tr>
+          <td align=3D=22center=22 valign=3D=22top=22 style=3D=22width:345px=
+; line-height:1px;=22>
+        <div style=3D=22font-size:12px; font-family:Arial, Verdana, Arial; colo=
+r:=23999999; line-height:15px; text-align: center;=22 class=3D=22font10=22>
+          <=21-- View with Images -->
+          <a href=3D=22https://notices=2Erei=2Ecom/pub/sf/FormLink?_ri_=3DX0Gzc2=
+X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8=
+XLzezezciu1uWVXMtX%3DYQpglLjHJlYQGjaM5YSzbFBMsTPze5Rji89MrsI4jUcY4zgKjcd8Iz=
+aTYauMPj79R3J70a2XRzczesSD5&amp;_ei_=3DEihgX1ZMJ5B4YD53c9lBFjrdqpYgD8OUKrXm=
+bBAGmpxJOBRG-R5QwGChcRXO4-89N4xQhbjI19xqMKbfdkvGarXF16LPFWX8LLzVMjJPG9sB-N0=
+NwcfgS-4yDgZTj2YHocHnB4kq7OR4bxIT8yE27H-X_8UUwosK1DF0oGQRww5rjlXnYrZsYpMNBC=
+gd-eA6yREG7V5lyz8YKEVUiyiVTqyCBPD7T0PCn-u7quaKiB-2N7oFYSV4AQMEreHJzrdgaG3Cl=
+p9HtMOVmkProV70f80J=2E=22 style=3D=22color:=23999999; text-decoration:none;=
+=22 class=3D=22lh12=22>
+            <span style=3D=22color:=23999999;=22><u>View in browser</u></span>
+          </a>
+          <=21-- View with Images -->
+                    <div style=3D=22line-height:25px;=22 class=3D=22lhfix=
+=22>&nbsp;</div>
+        </div>
+        <div style=3D=22font-size:10px; font-family:Helvetica, Arial, sans-seri=
+f; color:=23555555; line-height:14px;=22 class=3D=22font9 lh15=22>
+      <a href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpglLj=
+HJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1=
+uWVXtpKX%3DSRSAABCT&_ei_=3DEiPBiNWveF3V3xrqf9SSeJx61XDB2wVtiD0Ta-F7FDAinb6r=
+yOY7ukOT-Ja0oanZsb5moXIkZ8fhh3ZpR3sI80SuInzSBZFFiP2Y6IC2DQJPtLzoD9Tf32_nx3S=
+FPElFyHUUa2xQeBthKO3I8zVV3SF8lDOFIHGiaoPT1Q8_s5xlibxr2MqRYHchqZwz5HknHRB4yt=
+NCg0CoYR_Aa0SHZMHVlCMb1jvgDBXoYN8FZkZHZBiPPsRpu7wr5N0gzirnMOMWtCqxQLkEbvOos=
+RkuXRtuZpWXUiR7HsCVLtn24PKXVggTyCRrf4BbK64PFY0cRszPaE2VUT4SaEA2lYKs__BdkGja=
+FtckcPoDFfFGep6-KRvytv4uLrv6-xZ25PTW9g8S0tbvClzctozutVeDVFLXCuQqLzg9N3Y308Z=
+SZ0tW4TStHMoxs4FhigAwo7KH8LqB-vW24V3YtpdezjM-2tWYknqzx3Kme4JihuDo2dKzNt0ETT=
+Y0nA6iFTFBl8NLviGjRB1yuS4qbBlJyvCMpRCLYja1tQYtJT-c3DBsqvkS943pXHn3CEDj6oHbr=
+5YqSPdMbp7jdv3-MdJ9sPUgn3r187ONV-9Ic7R-E0_d0y8muOYRhoThbv8pRtYlu4Kx8djVRLJz=
+U52fHSOG8SnhMqhSgLx-3a5RTQxhAILpVgM348EHJxZ5iW2AXMqdOa0D_BbF_rvxptB9K-F1M-g=
+=2E=22 style=3D=22color:=23555555; text-decoration:underline; line-height:1=
+4px;=22 class=3D=22lh15=22>Unsubscribe</a> or <a href=3D=22https://notices=
+=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzc=
+vgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1uWVXtpKX%3DSRSAABCU&_ei_=3DEiPB=
+iNWveF3V3xrqf9SSeJx61XDB2wVtiD0Ta-F7FDAinb6ryOY7ukOT-Ja0oanZsb5moXIkZ8fhh3Z=
+pR3sI80SuInzSBZFFiP2Y6IC2DQJPtLzoD9Tf32_nx3SFPElFyHUUa2xQeBthKO3I8zVV3SF8lD=
+OFIHGiaoPT1Q8_s5xlibxr2MqRYHchqZwz5HknHRB4ytNCg0CoYR_Aa0SHZMHVlCMb1jvgDBXoY=
+N8FZkZHZBiPPsRpu7wr5N0gzirnMOMWtCqxQLkEbvOosRkuXRtuZpWXUiR7HsCVLtn24PKXVggT=
+yCRrf4BbK64PFY0cRszPaE2VUT4SaEA2lYKs__BdkGjaFtckcPoDFfFGep6-KRvytv4uLrv6-xZ=
+25PTW9g8S0tbvClzctozutVeDVFLXCuQqLzg9N3Y308ZSZ0tW4TStHMoxs4FhigAwo7KH8LqB-v=
+W24V3YtpdezjM-2tWYknqzx3Kme4JihuDo2dKzNt0ETTY0nA6iFTFBl8NLviGjRB1yuS4qbBlJy=
+vCMpRCLYja1tQYtJT-c3DBsqvkS943pXHn3CEDj6oHbr5YqSPdMbp7jdv3-MdJ9sPUgn3r187ON=
+V-9Ic7R-E0_d0y8muOYRhoThbv8pRtYlu4Kx8djVRLJzU52fHSOG8SnhMqhSgLx-3a5RTQxhAIL=
+pVgM348EHJxZ5iW2AXMqdOa0D_BbF_rvxptB9K-F1M-g=2E=22 style=3D=22color:=235555=
+55; text-decoration:underline; line-height:14px;=22 class=3D=22lh15=22>Chan=
+ge Your Email Address and Preferences</a> at any time=2E
+            For&nbsp;information about our privacy practices, see our <a hr=
+ef=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd=
+4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1uWVXtpKX=
+%3DSRSAABCW&_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG05FD8=
+bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmvMail1hfBUWJZ59j=
+b40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_vSQzdHyz1KDxieuR=
+dlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQwT0QxT_ljwHUbWR=
+Sf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22 sty=
+le=3D=22color:=23555555; text-decoration:underline; line-height:14px;=22 cl=
+ass=3D=22lh15=22>Privacy&nbsp;Policy</a>=2E
+            <div style=3D=22line-height:10px;=22 class=3D=22lhfix=22>&nbsp;=
+</div>
+            Need to contact REI? You can <a href=3D=22https://notices=2Erei=
+=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQGtd4vJHyAy1AtTCodsDkzbzdzcvgzgbn=
+LtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1uWVXtpKX%3DSRSAABCY&_ei_=3DEiPBiNWveF=
+3V3xrqf9SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG05FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQ=
+y__QzT1GU6ntpaygSfZh6tT9yoCImmvMail1hfBUWJZ59jb40q81R_jnMGQ0wGMDjO95m24_e93=
+PjVEQ3JPxranXylqN4TrwzaAesMol_vSQzdHyz1KDxieuRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3=
+ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQwT0QxT_ljwHUbWRSf8g4I_oge8l00WG9cDgQJjMg4fQM=
+3lxfB98SszVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22 style=3D=22color:=23555555; text=
+-decoration:underline; line-height:14px;=22 class=3D=22lh15=22>chat</a>, <a=
+ href=3D=22https://notices=2Erei=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DYQpglLjHJlYQ=
+Gtd4vJHyAy1AtTCodsDkzbzdzcvgzgbnLtJLzfTGaBce9dzfifGwWygDOy8XLzezezciu1uWVXt=
+pKX%3DSRSAABCA&_ei_=3DEiPBiNWveF3V3xrqf9SSeJzayJWmYyVq2WSIFqD59SRbZCPmJWG05=
+FD8bDMHNhy8nDD_qsw7FGkSVIneP1byQy__QzT1GU6ntpaygSfZh6tT9yoCImmvMail1hfBUWJZ=
+59jb40q81R_jnMGQ0wGMDjO95m24_e93PjVEQ3JPxranXylqN4TrwzaAesMol_vSQzdHyz1KDxi=
+euRdlGTXHSmRxfHlHXX1eM4jr7WcHOQ3ZTwKX9ROCh2eR2DHZijVBxkAjABIUtQwT0QxT_ljwHU=
+bWRSf8g4I_oge8l00WG9cDgQJjMg4fQM3lxfB98SszVHwwpzmQ8_m7asXdbJSUIGjbr0=2E=22 =
+style=3D=22color:=23555555; text-decoration:underline; line-height:14px;=22=
+ class=3D=22lh15=22>email</a> or call us at <a href=3D=22tel:8004264840=22 =
+style=3D=22color:=23555555; line-height:14px; text-decoration:none; cursor:=
+auto=22><span class=3D=22telgreyNoUnderline=22>800-426-4840</span></a>=2E<b=
+r />
+            Recreational Equipment, Inc=2E <span class=3D=22flagship_addres=
+sgrey=22>6750 S=2E 228th St=2E, Kent, WA 98032</span>=2E<br /><br />
+
+            &copy; 2018 Recreational Equipment, Inc=2E All rights reserved=
+=2E REI and the REI Co-op logo are trademarks of Recreational Equipment,&nb=
+sp;Inc=2E<br/><br/>       </div>
+        <div style=3D=22line-height:85px;=22 class=3D=22lhfix=22>&nbsp;</div>
+          </td>
+      </tr>
+      </table>
+
+  </td></tr></table>
+  <=21--/DISCLAIMER-->
+     =20
+  </td>
+  </tr>
+  </table>
+  <=21-- END FOOTER_CONTAINER -->
+
+</td>
+</tr>
+</table>
+
+
+<=21--Gmail App Scaling Fix-->
+<div class=3D=22gmailfix=22 style=3D=22white-space:nowrap; font:15px courie=
+r; line-height:0;=22>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+;=20
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+;=20
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</div>
+
+
+</body>
+</html>
+
+

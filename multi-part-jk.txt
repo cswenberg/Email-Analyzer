@@ -1,0 +1,65 @@
+Delivered-To: justin.khoo@gmail.com
+Received: by 2002:a17:90a:3b41:0:0:0:0 with SMTP id t1-v6csp1182559pjf;
+        Fri, 15 Jun 2018 12:46:48 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJm9/1u1dj9pHmkaXZ+S0aSh5QwrMc5VuA0YdGSBrQ50gLWQWsGlv5d2euctjcQs+SXTWNX
+X-Received: by 2002:a63:2c94:: with SMTP id s142-v6mr2740654pgs.39.1529092008645;
+        Fri, 15 Jun 2018 12:46:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529092008; cv=none;
+        d=google.com; s=arc-20160816;
+        b=q6mEIzJd/1HvOiubkHhcTpqPijqvRUKlzDOQxWOoLMsfzBTWdyi8/6mRx/cwJWMDV9
+         RO2eRWLrvZ8ndto7sEYnvATOdrMIa/kkQAY8ZO/Z6AhWBYUUoPLg4I7DRxjbBADGyydS
+         3wOhRf05HOUEXOnE7QD+5MpD821xwuFzncxMEfgBqCXTgNpLAXH6eQHN9annNXjhxevN
+         1Nyj75vME8EfktYEFfsjqKw+TDoE+NLq3ErKKZ+zYl7OL95unygQj7MCXewxXaA8/olL
+         9AoDlfndp43WWXhxyCTLkp90/S7NDXal/TSBX6S1ZVhb9xbgrQL24NhJZ+ghKUpcw1F1
+         o4Vw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=references:mime-version:subject:message-id:to:reply-to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=iLtMk2Jhp6T8QEkLvokU2cyDdZkE6y2BpcJlYOdPxOA=;
+        b=f33wjb5pkrcxTUmI8XyZgTVktaSkE1+X3lxbVsf1QLn4HR1oBJc5pszk4gi3SikdYK
+         Obtg6a22p1T0oV6Rc4tqgUwm5qeFmVTQ6RcWZ2eQZZ6/352DJhAW8u/NI6l8s4DsRHxT
+         wOT/nmxl4xr0vY0wodlQ4IjO8Mf2O8v77LFIWIZELiRYqB4xaarKxzG+o4rrff9RzhlY
+         92ETpS06ba4u960Ph4X0wmZFZeJYB3ntOQ8jCcLCrZ1n2h+P3h362/+NOlUclRj8CGGX
+         okE4X6ZrY5KSPPzigi8eMFMU4qn/XUpfQ51Un4bIna0llXzgJwpAzeDzwOLmxbmnP9dQ
+         6GUQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=W6iuTLjA;
+       spf=pass (google.com: domain of justin.khoo@yahoo.com designates 98.137.64.204 as permitted sender) smtp.mailfrom=justin.khoo@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+Return-Path: <justin.khoo@yahoo.com>
+Received: from sonic303-23.consmr.mail.gq1.yahoo.com (sonic303-23.consmr.mail.gq1.yahoo.com. [98.137.64.204])
+        by mx.google.com with ESMTPS id f35-v6si8220520plh.193.2018.06.15.12.46.48
+        for <justin.khoo@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 15 Jun 2018 12:46:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of justin.khoo@yahoo.com designates 98.137.64.204 as permitted sender) client-ip=98.137.64.204;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=W6iuTLjA;
+       spf=pass (google.com: domain of justin.khoo@yahoo.com designates 98.137.64.204 as permitted sender) smtp.mailfrom=justin.khoo@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1529092008; bh=iLtMk2Jhp6T8QEkLvokU2cyDdZkE6y2BpcJlYOdPxOA=; h=Date:From:Reply-To:To:Subject:References:From:Subject; b=W6iuTLjAlju9E/rdIIGNXKAa39PBEnZIjK+r3IOf27LMo3Zd2wh+ir8EEfzT89PWIKwMIcmMrZYwfgUAOKRZGTuMWuDOCIf1Ib1z1wrUPkrD408wAyGg3ngkmG/e+Z6vk0ak2xu5hhSHHIirCZlOfrwPFQi7Dx63t2pGuJ7a64P5wsVM1yP0FHCC1Q3YvQRX4DevdC7d6cVpV6/qzcnET8Jik9kiRQ8hr/4Nudxmhzu3fMJZaIsgOmnvuETdmCKdJ0x6x462ACyEjK2M5olHW2pUsN4+G9SN26f0Ye5OrkiXuiVgVezVufbwCUdsogw3fqOjmQqvb/jeIfbANmcvMA==
+X-YMail-OSG: X_gsvKEVM1m0SulmD_r8peZhdGGTKNVSiLkTM5X4QEgz5I4188q4LflJaA.HeHK Ck3zn1Oaybf6q_JazjCLgeDi9Iab.vD0IOb7pLPe_LZjI5DxtACNv369GHyeYzWfEAKIBImb2T04 UyuQLKx3DCjXb4HTQOMR.p0a421JyDmj9OpzO2cnRimM0GRNUEaSka0Agd.AqUT1FzbMnn1dZHlW HKt3Xl6tW4rHpU5Vg8a4N6EvlQXfEw2kHLASZj1Sm18HtVmtT_N1VegJzjTXbqocq9pKtHJ6F9rq zYXz9wSJPsfcv152uoVDQ6kIxpNAUVfxDZbjm5ku7p3MszDgNQ_rydh4UIr8YPCGxz9D.oZxDRd0 0UGFcers6AiHlQfHqXy6PzE45jtH1ndhF8BArXDr3F6q.u5ML8Q6xU8nQd8xsicoQye0055D2zrA 1DuGkx0liYphljhLhgd8GE.l7H1854bdMjDANEjTI7Zd.K3AkVx6mVB4F5aj5Z9Dy4IyvTOg0oi5 1EGdjZ6tsYle8Iagzsnw6FpYhIpLRUsjg_1zO8Dag4UbcBxv7DxkJLmEHtoeudNkxghOa9G_SwRk G2YTU_i79CNk33_4.iiY_KY6YNXthkSVcllY9n94kb_XAblGpRvrv1pnug8fg0EEC3bRf8HxuEFG wBClLaVEB__JmyHPap1Uw4WUnFTQnZG1S_rz_2y.rZY1JHIWIqcZn2rRIk3dD3UUIsUH3NDPtA7V GtPRd4wRaGmqy9EUIerTvLpuuuuHoQ4PoReT5F6DtYL4w1fQQyoo4Yc9TBcEpkBPKWn38ZVEb1LV VxxoLn1CaLIqfV581ILzyXgs8sOepm3hRlJPeEd2mQZNG7lF8Emp4lhR8d7yyhXnTwvx05BvGOIo Fjk0jy9iEaSOxy.gBO5rJaCkIkyT_4Tz334h8oD_jXjc2LtauvVI-
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic303.consmr.mail.gq1.yahoo.com with HTTP; Fri, 15 Jun 2018 19:46:48 +0000
+Date: Fri, 15 Jun 2018 19:46:47 +0000 (UTC)
+From: Justin Khoo <justin.khoo@yahoo.com>
+Reply-To: Justin Khoo <justin.khoo@yahoo.com>
+To: Justin Khoo <justin.khoo@gmail.com>
+Message-ID: <219998319.349026.1529092007756@mail.yahoo.com>
+Subject: This is the subject
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="----=_Part_349025_1195068316.1529092007755"
+References: <219998319.349026.1529092007756.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.11988 YahooMailNeo Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1 Safari/605.1.15
+Content-Length: 764
+
+------=_Part_349025_1195068316.1529092007755
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+This is the body of the email=C2=A0=C2=A0
+------=_Part_349025_1195068316.1529092007755
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html><head></head><body><div style="color:#000; background-color:#fff; font-family:Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;font-size:13px"><div>This is the <b>body</b> of the email</div><div></div><div id="yui_3_16_0_ym19_1_1529091972094_2626">&nbsp;</div><div class="signature" id="yui_3_16_0_ym19_1_1529091972094_2628"><div id="yui_3_16_0_ym19_1_1529091972094_2627">&nbsp;</div></div></div></body></html>
+------=_Part_349025_1195068316.1529092007755--
