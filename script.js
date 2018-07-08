@@ -9,6 +9,23 @@ var searchPhrases = {
 	boundary: 'boundary='
 }
 
+var contentTypes = {
+	multiPart: 'multipart/alternative',
+	textPlain: 'text/plain',
+	textHTML: 'text/html'
+}
+
+var SinglePart = function(contentType, transferEncoding, id) {
+	this.contentType = contentType
+	this.transferEncoding = transferEncoding
+	this.id = id
+}
+
+var results = {
+	mainType: '',
+	contents: []
+}
+
 window.onload = function () { 
 	//Check the support for the File API support 
  	if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -39,13 +56,17 @@ window.onload = function () {
 }
 
 var test = function() {
-	var substring = getContentType(textContents).result
-	if (substring == searchPhrases.multiPart) {
-		var leftover = textContents.substring(substring.endIndex)
+	var content = getContentType(textContents)
+	results.mainType = content.result
+	if (content == contentTypes.multiPart) {
+		var leftover = textContents.substring(content.endIndex)
 		testMulti(leftover)
 	} else {
-		testSingle(textContents)
+		var encoding = getTransferEncoding(textContents)
+		var newPart = new SinglePart(content.result, encoding.result, results.contents.length)
+		results.contents.push(newPart)
 	}
+	console.log(results)
 }
 
 var getContentType = function(s) {
@@ -62,12 +83,13 @@ var getContentType = function(s) {
 	} else {
 		console.log('no content type found.')
 		return {
-			success: false
+			success: false,
+			result: 'None'
 		}
 	}
 }
 
-var testSingle = function(s) {
+var getTransferEncoding = function(s) {
 	var index1 = s.indexOf(searchPhrases.transferEncoding)
 	if (index1 != -1) {
 		var index2 = s.indexOf('\n',index1)
@@ -75,12 +97,14 @@ var testSingle = function(s) {
 		console.log('content transfer encoding is: ' + substring)
 		return {
 			success: true,
+			result: substring,
 			endIndex: index2
 		}
 	} else {
 		console.log('no content transfer encoding found.')
 		return {
-			success: false
+			success: false,
+			result: 'None'
 		}
 	}
 
@@ -104,8 +128,10 @@ var testMulti = function(s) {
 			console.log('Section ' + sectionNum)
 			var content = getContentType(section.text)
 			if (content.success) {
-				var single = testSingle(section.text)
-				leftover = section.text.substring(single.endIndex)
+				var encoding = getTransferEncoding(section.text)
+				leftover = section.text.substring(encoding.endIndex)
+				var newPart = new SinglePart(content.result, encoding.result, results.contents.length)
+				results.contents.push(newPart)
 			} else {
 				hasNext = false
 				console.log('terminating')
