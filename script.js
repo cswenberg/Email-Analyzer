@@ -39,7 +39,7 @@ window.onload = function () {
 }
 
 var test = function() {
-	var substring = getContentType(textContents).sub
+	var substring = getContentType(textContents).result
 	if (substring == searchPhrases.multiPart) {
 		var leftover = textContents.substring(substring.endIndex)
 		testMulti(leftover)
@@ -56,7 +56,7 @@ var getContentType = function(s) {
 		console.log('content type is: ' + substring)
 		return {
 			success: true,
-			sub: substring,
+			result: substring,
 			endIndex: index2
 		}
 	} else {
@@ -73,8 +73,15 @@ var testSingle = function(s) {
 		var index2 = s.indexOf('\n',index1)
 		var substring = s.substring(index1 + searchPhrases.transferEncoding.length,index2)
 		console.log('content transfer encoding is: ' + substring)
+		return {
+			success: true,
+			endIndex: index2
+		}
 	} else {
 		console.log('no content transfer encoding found.')
+		return {
+			success: false
+		}
 	}
 
 }
@@ -83,7 +90,8 @@ var testMulti = function(s) {
 
 	var index1 = s.indexOf(searchPhrases.boundary)
 	var index2 = s.indexOf('\n', index1)
-	var boundary = s.substring(index1 + searchPhrases.boundary.length + 1, index2 - 1) //+1 and -1 to trim quotation marks 
+	var boundary = s.substring(index1 + searchPhrases.boundary.length, index2)
+	boundary = trimQuotes(boundary)
 	console.log('boundary identifier is: ' + boundary)
 
 	var leftover = s.substring(index2)
@@ -91,28 +99,57 @@ var testMulti = function(s) {
 	var sectionNum = 1
 	while (hasNext) {
 		//console.log(leftover)
-		console.log('Section ' + sectionNum)
-		var index3 = leftover.indexOf(boundary)
-		if (index3 == -1) {
+		var section = findNextBoundary(leftover, boundary) 
+		if (section.success) {
+			console.log('Section ' + sectionNum)
+			var content = getContentType(section.text)
+			if (content.success) {
+				var single = testSingle(section.text)
+				leftover = section.text.substring(single.endIndex)
+			} else {
+				hasNext = false
+				console.log('terminating')
+				continue
+			}
+		} else {
 			hasNext = false
 			continue
 		}
-
-		var index4 = leftover.indexOf('\n\n', index3)
-		var content = getContentType(leftover)
-		if (!content.success) {
-			hasNext = false
-			console.log('terminating')
-			continue
-		}
-
-		testSingle(leftover)
-		leftover = leftover.substring(index4 + 4)
 		sectionNum++
 	}
 
 }
 
+var findNextBoundary = function(s, boundary) {
+
+	var boundIndex = s.indexOf(boundary)
+	if (boundIndex != -1) {
+		console.log('next boundary found')
+		//console.log(s.substring(boundIndex))
+		return {
+			success: true,
+			text: s.substring(boundIndex)
+		}
+	}	else {
+		console.log('next boundary not found.')
+		return {
+			success: false
+		}
+	}
+	
+}
+
+var trimQuotes = function(s) {
+
+	//console.log(s)
+	var index1 = s.indexOf('"')
+	var string = s.substring(index1+1)
+	//console.log(string)
+	var index2 = string.indexOf('"')
+	string = string.substring(0, index2)
+	//console.log(string)
+	return string
+}
 
 
 
