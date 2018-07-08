@@ -5,7 +5,8 @@ var textContents
 var searchPhrases = {
 	contentType: 'Content-Type: ',
 	transferEncoding: 'Content-Transfer-Encoding: ',
-	multiPart: 'multipart/alternative'
+	multiPart: 'multipart/alternative',
+	boundary: 'boundary='
 }
 
 window.onload = function () { 
@@ -24,6 +25,7 @@ window.onload = function () {
 	            reader.onload = function (e) { 
 	                textContents = reader.result
 	                console.log(textContents)
+	                test()
 	            } 
 	            reader.readAsText(fileTobeRead); 
 	        } 
@@ -37,15 +39,23 @@ window.onload = function () {
 }
 
 var test = function() {
-
-	var index1 = textContents.indexOf(searchPhrases.contentType)
-	var index2 = textContents.indexOf(';', index1)
-	var substring  = textContents.substring(index1 + searchPhrases.contentType.length,index2)
-	console.log('content type is: ' + substring)
+	var substring = getContentType(textContents).sub
 	if (substring == searchPhrases.multiPart) {
-		testMulti('')
+		var leftover = textContents.substring(substring.endIndex)
+		testMulti(leftover)
 	} else {
 		testSingle(textContents)
+	}
+}
+
+var getContentType = function(s) {
+	var index1 = s.indexOf(searchPhrases.contentType)
+	var index2 = s.indexOf(';', index1)
+	var substring  = s.substring(index1 + searchPhrases.contentType.length,index2)
+	console.log('content type is: ' + substring)
+	return {
+		sub: substring,
+		endIndex: index2
 	}
 }
 
@@ -59,6 +69,44 @@ var testSingle = function(s) {
 
 var testMulti = function(s) {
 
-
+	var index1 = s.indexOf(searchPhrases.boundary)
+	var index2 = s.indexOf('\n', index1)
+	var boundary = s.substring(index1 + searchPhrases.boundary.length + 1, index2 - 1) //+1 and -1 to trim quotation marks 
+	console.log('boundary identifier is: ' + boundary)
+	var leftover = s.substring(index2)
+	var hasNext = true
+	var counter = 0
+	while (hasNext) {
+		console.log(leftover)
+		var index3 = leftover.indexOf(boundary)
+		if (index3 == -1 || counter > 3) {
+			hasNext = false
+			continue
+		}
+		var index4 = leftover.indexOf('\n\n', index3)
+		leftover = leftover.substring(index4 + 4)
+		getContentType(leftover)
+		testSingle(leftover)
+		counter++
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
