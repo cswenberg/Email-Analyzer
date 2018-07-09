@@ -6,7 +6,10 @@ var searchPhrases = {
 	contentType: 'Content-Type: ',
 	transferEncoding: 'Content-Transfer-Encoding: ',
 	multiPart: 'multipart/alternative',
-	boundary: 'boundary='
+	boundary: 'boundary=',
+	sender: 'header.from=',
+	mediaQuery: '@media ',
+	arcAuth: 'ARC-Authentication-Results'
 }
 
 var contentTypes = {
@@ -22,6 +25,7 @@ var SinglePart = function(contentType, transferEncoding, id) {
 }
 
 var results = {
+	sender: '',
 	mainType: '',
 	contents: []
 }
@@ -42,6 +46,9 @@ window.onload = function () {
 	            reader.onload = function (e) { 
 	                textContents = reader.result
 	                console.log(textContents)
+	                results.sender = ''
+	                results.mainType = ''
+	                results.contents = []
 	                test()
 	            } 
 	            reader.readAsText(fileTobeRead); 
@@ -56,9 +63,11 @@ window.onload = function () {
 }
 
 var test = function() {
+	var sender = getSender(textContents)
+	results.sender = sender.result
 	var content = getContentType(textContents)
 	results.mainType = content.result
-	if (content == contentTypes.multiPart) {
+	if (content.result == contentTypes.multiPart) {
 		var leftover = textContents.substring(content.endIndex)
 		testMulti(leftover)
 	} else {
@@ -69,45 +78,62 @@ var test = function() {
 	console.log(results)
 }
 
-var getContentType = function(s) {
-	var index1 = s.indexOf(searchPhrases.contentType)
+var parser = function(s, phrase, endPhrase) {
+	var index1 = s.indexOf(phrase)
 	if (index1 != -1) {
-		var index2 = s.indexOf(';', index1)
-		var substring  = s.substring(index1 + searchPhrases.contentType.length,index2)
-		console.log('content type is: ' + substring)
+		var index2 = s.indexOf(endPhrase, index1)
+		var string  = s.substring(index1 + phrase.length, index2)
 		return {
 			success: true,
-			result: substring,
+			result: string,
 			endIndex: index2
 		}
 	} else {
-		console.log('no content type found.')
 		return {
 			success: false,
-			result: 'None'
+			result: 'none'
 		}
 	}
 }
 
-var getTransferEncoding = function(s) {
-	var index1 = s.indexOf(searchPhrases.transferEncoding)
-	if (index1 != -1) {
-		var index2 = s.indexOf('\n',index1)
-		var substring = s.substring(index1 + searchPhrases.transferEncoding.length,index2)
-		console.log('content transfer encoding is: ' + substring)
-		return {
-			success: true,
-			result: substring,
-			endIndex: index2
-		}
+var getQuery = function(s, phrase, endPhrase, message) {
+	var query = parser(s, phrase, endPhrase)
+	if (query.success) {
+		console.log(message + ' is: ' + query.result)
 	} else {
-		console.log('no content transfer encoding found.')
-		return {
-			success: false,
-			result: 'None'
-		}
+		console.log(message + ' not found.')
 	}
+	return query
+}
 
+var getSender = function(s) {
+	var index1 = s.indexOf(searchPhrases.arcAuth)
+	if (index1 != -1) {
+		var query = getQuery(s, searchPhrases.sender, '\n', 'sender')
+		return query
+	} else {
+		console.log(searchPhrases.arcAuth + ' not found')
+	}
+	return {
+		success: false,
+		result: 'none'
+	}
+}
+
+var getContentType = function(s) {
+	var query = getQuery(s, searchPhrases.contentType, ';', 'content type')
+	return query
+
+}
+
+var getTransferEncoding = function(s) {
+	var query = getQuery(s, searchPhrases.transferEncoding, '\n', 'transfer encoding')
+	return query
+}
+
+var getMediaQuery = function(s) {
+	var query = getQuery(s, searchPhrases.mediaQuery, '\n', 'media query')
+	return query
 }
 
 var testMulti = function(s) {
@@ -147,7 +173,6 @@ var testMulti = function(s) {
 }
 
 var findNextBoundary = function(s, boundary) {
-
 	var boundIndex = s.indexOf(boundary)
 	if (boundIndex != -1) {
 		console.log('next boundary found')
@@ -166,7 +191,6 @@ var findNextBoundary = function(s, boundary) {
 }
 
 var trimQuotes = function(s) {
-
 	//console.log(s)
 	var index1 = s.indexOf('"')
 	var string = s.substring(index1+1)
