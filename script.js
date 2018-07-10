@@ -18,16 +18,18 @@ var contentTypes = {
 	textHTML: 'text/html'
 }
 
-var SinglePart = function(contentType, transferEncoding, id) {
+var Section = function(id, text, contentType, transferEncoding, mediaQuery) {
+	this.id = id
+	this.text = text
 	this.contentType = contentType
 	this.transferEncoding = transferEncoding
-	this.id = id
+	this.mediaQuery = mediaQuery
 }
 
 var results = {
 	sender: '',
 	mainType: '',
-	contents: []
+	sections: []
 }
 
 window.onload = function () { 
@@ -48,7 +50,7 @@ window.onload = function () {
 	                console.log(textContents)
 	                results.sender = ''
 	                results.mainType = ''
-	                results.contents = []
+	                results.sections = []
 	                test()
 	            } 
 	            reader.readAsText(fileTobeRead); 
@@ -72,8 +74,9 @@ var test = function() {
 		testMulti(leftover)
 	} else {
 		var encoding = getTransferEncoding(textContents)
-		var newPart = new SinglePart(content.result, encoding.result, results.contents.length)
-		results.contents.push(newPart)
+		var media = getMediaQuery(textContents)
+		var newSection = new Section(results.sections.length, textContents.substring(content.startIndex), content.result, encoding.result, media.result)
+		results.sections.push(newSection)
 	}
 	console.log(results)
 }
@@ -86,6 +89,7 @@ var parser = function(s, phrase, endPhrase) {
 		return {
 			success: true,
 			result: string,
+			startIndex: index1,
 			endIndex: index2
 		}
 	} else {
@@ -123,7 +127,6 @@ var getSender = function(s) {
 var getContentType = function(s) {
 	var query = getQuery(s, searchPhrases.contentType, ';', 'content type')
 	return query
-
 }
 
 var getTransferEncoding = function(s) {
@@ -145,43 +148,56 @@ var testMulti = function(s) {
 	console.log('boundary identifier is: ' + boundary)
 
 	var leftover = s.substring(index2)
-	var hasNext = true
-	var sectionNum = 1
-	while (hasNext) {
-		//console.log(leftover)
-		var section = findNextBoundary(leftover, boundary) 
-		if (section.success) {
-			console.log('Section ' + sectionNum)
-			var content = getContentType(section.text)
-			if (content.success) {
-				var encoding = getTransferEncoding(section.text)
-				leftover = section.text.substring(encoding.endIndex)
-				var newPart = new SinglePart(content.result, encoding.result, results.contents.length)
-				results.contents.push(newPart)
-			} else {
-				hasNext = false
-				console.log('terminating')
-				continue
-			}
+	splitSections(leftover, boundary)
+
+	results.sections.forEach(function(section) {
+		console.log('Section' + section.id)
+		var content = getContentType(section.text)
+		var encoding = getTransferEncoding(section.text)
+		var media = getMediaQuery(section.text)
+		section.contentType = content.result
+		section.transferEncoding = encoding.result
+		section.mediaQuery = media.result
+	})
+}
+
+var splitSections = function(s, boundary) {
+	//getting indexes of all boundaries
+	var placeHolder = 0
+	var indexList = []
+	var okay = true
+	while (okay) {
+		var nextBoundary = findNextBoundary(s.substring(placeHolder), boundary)
+		if (nextBoundary.success && !indexList.includes(nextBoundary.index)) {
+			placeHolder += nextBoundary.index + boundary.length
+			indexList.push(placeHolder)
 		} else {
-			hasNext = false
-			continue
+			okay = false
+			break
 		}
-		sectionNum++
 	}
+	//put according text into each section
+	for (var i = 0; i<indexList.length-1; i++) {
+		var text = s.substring(indexList[i], indexList[i+1])
+		var newSection = new Section(results.sections.length, text)
+		results.sections.push(newSection)
+	}
+	//console.log(results.sections)
 
 }
 
 var findNextBoundary = function(s, boundary) {
+	console.log(s)
 	var boundIndex = s.indexOf(boundary)
 	if (boundIndex != -1) {
-		console.log('next boundary found')
+		console.log('next boundary found at: ' + boundIndex)
 		//console.log(s.substring(boundIndex))
 		return {
 			success: true,
-			text: s.substring(boundIndex)
+			text: s.substring(boundIndex),
+			index: boundIndex
 		}
-	}	else {
+	} else {
 		console.log('next boundary not found.')
 		return {
 			success: false
