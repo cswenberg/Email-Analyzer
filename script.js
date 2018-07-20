@@ -1,6 +1,53 @@
+// ABILITY TO PROMPT WINDOW TO SELECT FILE TO ANALYZE
+
+// window.onload = function () { 
+// 	//Check the support for the File API support 
+//  	if (window.File && window.FileReader && window.FileList && window.Blob) {
+//     	let fileSelected = document.getElementById('txtfiletoread');
+//     	fileSelected.addEventListener('change', function (e) { 
+// 	        //Set the extension for the file 
+// 	        let fileExtension = /text.*/; 
+// 	        //Get the file object 
+// 		    let fileTobeRead = fileSelected.files[0]
+// 		    //Check of the extension match 
+// 		    if (fileTobeRead.type.match(fileExtension)) { 
+// 		        //Initialize the FileReader object to read the 2file 
+// 		        let reader = new FileReader(); 
+// 		        reader.onload = function (e) { 
+// 		            fileText = reader.result
+// 		            console.log(fileText)
+// 		            results.sender = ''
+// 		            results.mainType = ''
+// 		            results.sections = []
+// 		            test(fileText)
+// 		        } 
+// 		        reader.readAsText(fileTobeRead); 
+// 		    }
+// 		    else {
+// 		        alert("Please select text file"); 
+// 		    }
+// 	    }, false);
+// 	} else { 
+//      alert("Files are not supported"); 
+//  	} 
+// }
 
 
-let fileText
+// Make sure we got a filename on the command line.
+if (process.argv.length < 3) {
+  console.log(`Usage: node ${process.argv[1]} FILENAME`)
+  console.log('Needs a file to run server.js on')
+  process.exit(1);
+}
+// Read the file and print its contents.
+var fs = require('fs')
+let filename = process.argv[2];
+fs.readFile(filename, 'utf8', function(error, data) {
+  if (error) throw error;
+  console.log(`${filename} successfully loaded`);
+  console.log(data)
+  test(data)
+});
 
 let searchPhrases = {
 	contentType: 'Content-Type: ',
@@ -27,41 +74,10 @@ let Section = function(id, text, contentType, transferEncoding, mediaQuery) {
 }
 
 let results = {
+	fileName: filename,
 	sender: '',
 	mainType: '',
 	sections: []
-}
-
-window.onload = function () { 
-	//Check the support for the File API support 
- 	if (window.File && window.FileReader && window.FileList && window.Blob) {
-    	let fileSelected = document.getElementById('txtfiletoread');
-    	fileSelected.addEventListener('change', function (e) { 
-	        //Set the extension for the file 
-	        let fileExtension = /text.*/; 
-	        //Get the file object 
-		    let fileTobeRead = fileSelected.files[0]
-		    //Check of the extension match 
-		    if (fileTobeRead.type.match(fileExtension)) { 
-		        //Initialize the FileReader object to read the 2file 
-		        let reader = new FileReader(); 
-		        reader.onload = function (e) { 
-		            fileText = reader.result
-		            console.log(fileText)
-		            results.sender = ''
-		            results.mainType = ''
-		            results.sections = []
-		            test(fileText)
-		        } 
-		        reader.readAsText(fileTobeRead); 
-		    }
-		    else {
-		        alert("Please select text file"); 
-		    }
-	    }, false);
-	} else { 
-     alert("Files are not supported"); 
- 	} 
 }
 
 let test = function(text) {
@@ -88,13 +104,17 @@ let test = function(text) {
 		}
 	}
 
-	let getQuery = function(s, phrase, endPhrase, message) {
-		let query = parser(s, phrase, endPhrase)
-		if (query.success) {
-			console.log(`${message} is: ${query.result}`)
+	let message = function(s, bool, result) {
+		if (bool) {
+			console.log(`${s} is: ${result}`)
 		} else {
-			console.log(`${message} not found.`)
+			console.log(`${s} not found.`)
 		}
+	}
+
+	let getQuery = function(s, phrase, endPhrase, searchWord) {
+		let query = parser(s, phrase, endPhrase)
+		message(searchWord, query.success, query.result)
 		return query
 	}
 
@@ -203,6 +223,19 @@ let test = function(text) {
 		return string
 	}
 
+	let report = function() {
+		console.clear()
+		console.log('// REPORT //')
+		console.log(`file name: ${results.fileName}`)
+		console.log(`sender: ${results.sender}\ncontent type: ${results.mainType}`)
+		results.sections.forEach(function(each) {
+			console.log(`Section ${each.id}:`)
+			message('content type', true, each.contentType)
+			message('transfer encoding', true, each.transferEncoding)
+			message('media query', true, each.mediaQuery)
+		})
+	}
+
 	var execute = function(fileText) {
 		let sender = getSender(fileText)
 		results.sender = sender.result
@@ -217,7 +250,8 @@ let test = function(text) {
 			let newSection = new Section(results.sections.length, fileText.substring(content.startIndex), content.result, encoding.result, media.result)
 			results.sections.push(newSection)
 		}
-		console.log(results)
+		report()
+		//console.log(results)
 	}
 }
 
