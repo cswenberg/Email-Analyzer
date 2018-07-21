@@ -42,9 +42,6 @@ if (process.argv.length < 3) {
   process.exit(1);
 }
 // Read the file and print its contents.
-var decoded = {
-	from: 'test'
-}
 console.log(decoded.from)
 var fs = require('fs')
 let filename = process.argv[2];
