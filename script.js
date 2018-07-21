@@ -49,6 +49,22 @@ fs.readFile(filename, 'utf8', function(error, data) {
   test(data)
 });
 
+function decode(email) {
+	// setup an event listener when the parsing finishes
+	mailparser.on("end", function(mail){
+		console.log("\n\n\n\nText body:", mail.text); // How are you today?
+		console.log('\n\n\n\nHTML body:', mail.html)
+	    console.log("From:", mail.from); //[{address:'sender@example.com',name:'Sender Name'}]
+	    console.log("Subject:", mail.subject); // Hello world!
+	    console.log('Attachments:', mail.attachments)
+	    console.log('test finished')
+	});
+	 
+	// send the email source to the parser
+	mailparser.write(email);
+	mailparser.end();
+}
+
 let searchPhrases = {
 	contentType: 'Content-Type: ',
 	transferEncoding: 'Content-Transfer-Encoding: ',
@@ -230,9 +246,9 @@ let test = function(text) {
 		console.log(`sender: ${results.sender}\ncontent type: ${results.mainType}`)
 		results.sections.forEach(function(each) {
 			console.log(`Section ${each.id}:`)
-			message('content type', true, each.contentType)
-			message('transfer encoding', true, each.transferEncoding)
-			message('media query', true, each.mediaQuery)
+			message('  content type', true, each.contentType)
+			message('  transfer encoding', true, each.transferEncoding)
+			message('  media query', true, each.mediaQuery)
 		})
 	}
 
