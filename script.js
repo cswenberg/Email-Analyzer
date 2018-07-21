@@ -42,7 +42,6 @@ if (process.argv.length < 3) {
   process.exit(1);
 }
 // Read the file and print its contents.
-console.log(decoded.from)
 var fs = require('fs')
 let filename = process.argv[2];
 fs.readFile(filename, 'utf8', function(error, data) {
@@ -72,42 +71,42 @@ let decode = function(email) {
 	mailparser.end();
 }
 
-let searchPhrases = {
-	contentType: 'Content-Type: ',
-	transferEncoding: 'Content-Transfer-Encoding: ',
-	multiPart: 'multipart/alternative',
-	boundary: 'boundary=',
-	sender: 'header.from=',
-	mediaQuery: '@media ',
-	arcAuth: 'ARC-Authentication-Results'
-}
-
-let contentTypes = {
-	multiPart: 'multipart/alternative',
-	textPlain: 'text/plain',
-	textHTML: 'text/html'
-}
-
-let Section = function(id, text, contentType, transferEncoding, mediaQuery) {
-	this.id = id
-	this.text = text
-	this.contentType = contentType
-	this.transferEncoding = transferEncoding
-	this.mediaQuery = mediaQuery
-}
-
-let results = {
-	fileName: filename,
-	sender: '',
-	mainType: '',
-	sections: []
-}
-
 let test = function(decoded, text) {
 	execute(decoded, text)
 }
 
 {
+	let searchPhrases = {
+		contentType: 'Content-Type: ',
+		transferEncoding: 'Content-Transfer-Encoding: ',
+		multiPart: 'multipart/alternative',
+		boundary: 'boundary=',
+		sender: 'header.from=',
+		mediaQuery: '@media ',
+		arcAuth: 'ARC-Authentication-Results'
+	}
+
+	let contentTypes = {
+		multiPart: 'multipart/alternative',
+		textPlain: 'text/plain',
+		textHTML: 'text/html'
+	}
+
+	let Section = function(id, text, contentType, transferEncoding, mediaQuery) {
+		this.id = id
+		this.text = text
+		this.contentType = contentType
+		this.transferEncoding = transferEncoding
+		this.mediaQuery = mediaQuery
+	}
+
+	let results = {
+		fileName: filename,
+		sender: '',
+		mainType: '',
+		sections: []
+	}
+
 	let parser = function(s, phrase, endPhrase) {
 		let index1 = s.indexOf(phrase)
 		if (index1 != -1) {
