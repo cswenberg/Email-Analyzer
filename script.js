@@ -32,6 +32,8 @@
 //  	} 
 // }
 
+var MailParser = require("mailparser-mit").MailParser;
+var mailparser = new MailParser();
 
 // Make sure we got a filename on the command line.
 if (process.argv.length < 3) {
@@ -40,24 +42,32 @@ if (process.argv.length < 3) {
   process.exit(1);
 }
 // Read the file and print its contents.
+var decoded = {
+	from: 'test'
+}
+console.log(decoded.from)
 var fs = require('fs')
 let filename = process.argv[2];
 fs.readFile(filename, 'utf8', function(error, data) {
   if (error) throw error;
   console.log(`${filename} successfully loaded`);
-  console.log(data)
-  test(data)
+  //console.log(data)
+  decode(data)
 });
 
-function decode(email) {
+let decode = function(email) {
 	// setup an event listener when the parsing finishes
 	mailparser.on("end", function(mail){
-		console.log("\n\n\n\nText body:", mail.text); // How are you today?
-		console.log('\n\n\n\nHTML body:', mail.html)
+		//console.log("\n\n\n\nText body:", mail.text); // How are you today?
+		//console.log('\n\n\n\nHTML body:', mail.html)
 	    console.log("From:", mail.from); //[{address:'sender@example.com',name:'Sender Name'}]
 	    console.log("Subject:", mail.subject); // Hello world!
 	    console.log('Attachments:', mail.attachments)
 	    console.log('test finished')
+	    console.log('mail', mail)
+	    test(mail, email) 
+	    //needed to call test inside this block because test was being called before this section of parsing finished,
+	    //causing crashed because passing the 'mail' object would be undefined
 	});
 	 
 	// send the email source to the parser
@@ -96,8 +106,8 @@ let results = {
 	sections: []
 }
 
-let test = function(text) {
-	execute(text)
+let test = function(decoded, text) {
+	execute(decoded, text)
 }
 
 {
@@ -163,6 +173,14 @@ let test = function(text) {
 		return query
 	}
 
+	let decodeSection = function(section) {
+		if (section.contentType == contentTypes.textPlain) {
+			section.text = decoded.text
+		} else if (section.contentType == contentTypes.textHTML) {
+			section.text = decoded.html
+		}
+	}
+
 	let testMulti = function(s) {
 
 		let index1 = s.indexOf(searchPhrases.boundary)
@@ -177,6 +195,7 @@ let test = function(text) {
 		results.sections.forEach(function(section) {
 			console.log(`Section ${section.id}`)
 			let content = getContentType(section.text)
+			decodeSection(section)
 			let encoding = getTransferEncoding(section.text)
 			let media = getMediaQuery(section.text)
 			section.contentType = content.result
@@ -252,9 +271,11 @@ let test = function(text) {
 		})
 	}
 
-	var execute = function(fileText) {
-		let sender = getSender(fileText)
-		results.sender = sender.result
+	var execute = function(decoded, fileText) {
+		// let sender = getSender(fileText)
+		// results.sender = sender.result
+		console.log(decoded.from[0].name)
+		results.sender = decoded.from[0].name
 		let content = getContentType(fileText)
 		results.mainType = content.result
 		if (content.result == contentTypes.multiPart) {
@@ -264,6 +285,7 @@ let test = function(text) {
 			let encoding = getTransferEncoding(fileText)
 			let media = getMediaQuery(fileText)
 			let newSection = new Section(results.sections.length, fileText.substring(content.startIndex), content.result, encoding.result, media.result)
+			decodeSection(newSection)
 			results.sections.push(newSection)
 		}
 		report()
