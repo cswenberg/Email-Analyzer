@@ -78,14 +78,16 @@ let test = function(decoded, text, fileName) {
 		textHTML: 'text/html'
 	}
 
-	let Section = function(id, text, contentType, transferEncoding, mediaQuery) {
-		this.id = id
-		this.text = text
-		this.contentType = contentType
-		this.transferEncoding = transferEncoding
-		this.mediaQuery = mediaQuery
+	class Section {
+		constructor(id, text, contentType, transferEncoding, mediaQuery) {
+			this.id = id
+			this.text = text
+			this.contentType = contentType
+			this.transferEncoding = transferEncoding
+			this.mediaQuery = mediaQuery
+		}
 	}
-
+	
 	let results = {
 		fileName: '',
 		sender: '',
