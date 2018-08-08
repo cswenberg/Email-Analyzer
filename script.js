@@ -1,39 +1,41 @@
 // ABILITY TO PROMPT WINDOW TO SELECT FILE TO ANALYZE
 
-// window.onload = function () { 
-// 	//Check the support for the File API support 
+// window.onload = function () {
+// 	//Check the support for the File API support
 //  	if (window.File && window.FileReader && window.FileList && window.Blob) {
 //     	let fileSelected = document.getElementById('txtfiletoread');
-//     	fileSelected.addEventListener('change', function (e) { 
-// 	        //Set the extension for the file 
-// 	        let fileExtension = /text.*/; 
-// 	        //Get the file object 
+//     	fileSelected.addEventListener('change', function (e) {
+// 	        //Set the extension for the file
+// 	        let fileExtension = /text.*/;
+// 	        //Get the file object
 // 		    let fileTobeRead = fileSelected.files[0]
-// 		    //Check of the extension match 
-// 		    if (fileTobeRead.type.match(fileExtension)) { 
-// 		        //Initialize the FileReader object to read the 2file 
-// 		        let reader = new FileReader(); 
-// 		        reader.onload = function (e) { 
+// 		    //Check of the extension match
+// 		    if (fileTobeRead.type.match(fileExtension)) {
+// 		        //Initialize the FileReader object to read the 2file
+// 		        let reader = new FileReader();
+// 		        reader.onload = function (e) {
 // 		            fileText = reader.result
 // 		            console.log(fileText)
 // 		            results.sender = ''
 // 		            results.mainType = ''
 // 		            results.sections = []
 // 		            test(fileText)
-// 		        } 
-// 		        reader.readAsText(fileTobeRead); 
+// 		        }
+// 		        reader.readAsText(fileTobeRead);
 // 		    }
 // 		    else {
-// 		        alert("Please select text file"); 
+// 		        alert("Please select text file");
 // 		    }
 // 	    }, false);
-// 	} else { 
-//      alert("Files are not supported"); 
-//  	} 
+// 	} else {
+//      alert("Files are not supported");
+//  	}
 // }
 
 var MailParser = require("mailparser-mit").MailParser;
 var mailparser = new MailParser();
+var Models = require('./models.js')
+var Parser = require('./parser.js')
 
 // Make sure we got a filename on the command line.
 if (process.argv.length < 3) {
@@ -61,11 +63,11 @@ let decode = function(email) {
 	    console.log('Attachments:', mail.attachments)
 	    console.log('test finished')
 	    console.log('mail', mail)
-	    test(mail, email) 
+	    test(mail, email)
 	    //needed to call test inside this block because test was being called before this section of parsing finished,
 	    //causing crashed because passing the 'mail' object would be undefined
 	});
-	 
+
 	// send the email source to the parser
 	mailparser.write(email);
 	mailparser.end();
@@ -76,30 +78,9 @@ let test = function(decoded, text) {
 }
 
 {
-	let searchPhrases = {
-		contentType: 'Content-Type: ',
-		transferEncoding: 'Content-Transfer-Encoding: ',
-		multiPart: 'multipart/alternative',
-		boundary: 'boundary=',
-		sender: 'header.from=',
-		mediaQuery: '@media ',
-		arcAuth: 'ARC-Authentication-Results'
-	}
-
-	let contentTypes = {
-		multiPart: 'multipart/alternative',
-		textPlain: 'text/plain',
-		textHTML: 'text/html'
-	}
-
-	let Section = function(id, text, contentType, transferEncoding, mediaQuery) {
-		this.id = id
-		this.text = text
-		this.contentType = contentType
-		this.transferEncoding = transferEncoding
-		this.mediaQuery = mediaQuery
-	}
-
+  let decoded
+	let searchPhrases = Parser.searchPhrases
+	let contentTypes = Parser.contentTypes
 	let results = {
 		fileName: filename,
 		sender: '',
@@ -107,96 +88,52 @@ let test = function(decoded, text) {
 		sections: []
 	}
 
-	let parser = function(s, phrase, endPhrase) {
-		let index1 = s.indexOf(phrase)
-		if (index1 != -1) {
-			let index2 = s.indexOf(endPhrase, index1)
-			let string  = s.substring(index1 + phrase.length, index2)
-			return {
-				success: true,
-				result: string,
-				startIndex: index1,
-				endIndex: index2
-			}
-		} else {
-			return {
-				success: false,
-				result: 'none'
-			}
-		}
-	}
+  var execute = function(dcded, fileText) {
+    // let sender = getSender(fileText)
+    // results.sender = sender.result
+    decoded = dcded
+    console.log(decoded.from[0].name)
+    results.sender = decoded.from[0].name
+    let content = Parser.getContentType(fileText)
+    results.mainType = content.result
+    if (content.result == contentTypes.multiPart) {
+      let leftover = fileText.substring(content.endIndex)
+      testMulti(leftover)
+    } else {
+      testSingle(fileText, results.mainType)
+    }
+    report()
+    //console.log(results)
+  }
 
-	let message = function(s, bool, result) {
-		if (bool) {
-			console.log(`${s} is: ${result}`)
-		} else {
-			console.log(`${s} not found.`)
-		}
-	}
+  let testSingle = (fileText, type) => {
+    let encoding = Parser.getTransferEncoding(fileText)
+    if (type == contentTypes.textPlain) {
+      //console.log('found plain text part')
+      let newPlainText = new Models.PlainText(results.sections.length, decoded.text, encoding.result)
+      results.textPlain = newPlainText
+    } else if (type == contentTypes.textHTML) {
+      //console.log('found text html part')
+      let media = Parser.getMediaQuery(fileText)
+      let newTextHTML = new Models.TextHTML(results.sections.length, decoded.html, encoding.result, media.result)
+      results.textHTML = newTextHTML
+    }
+    //console.log(type)
+  }
 
-	let getQuery = function(s, phrase, endPhrase, searchWord) {
-		let query = parser(s, phrase, endPhrase)
-		message(searchWord, query.success, query.result)
-		return query
-	}
-
-	let getSender = function(s) {
-		let index1 = s.indexOf(searchPhrases.arcAuth)
-		if (index1 != -1) {
-			let query = getQuery(s, searchPhrases.sender, '\n', 'sender')
-			return query
-		} else {
-			console.log(`${searchPhrases.arcAuth} not found.`)
-		}
-		return {
-			success: false,
-			result: 'none'
-		}
-	}
-
-	let getContentType = function(s) {
-		let query = getQuery(s, searchPhrases.contentType, ';', 'content type')
-		return query
-	}
-
-	let getTransferEncoding = function(s) {
-		let query = getQuery(s, searchPhrases.transferEncoding, '\n', 'transfer encoding')
-		return query
-	}
-
-	let getMediaQuery = function(s) {
-		let query = getQuery(s, searchPhrases.mediaQuery, '\n', 'media query')
-		return query
-	}
-
-	let decodeSection = function(section) {
-		if (section.contentType == contentTypes.textPlain) {
-			section.text = decoded.text
-		} else if (section.contentType == contentTypes.textHTML) {
-			section.text = decoded.html
-		}
-	}
-
-	let testMulti = function(s) {
-
+	let testMulti = s => {
 		let index1 = s.indexOf(searchPhrases.boundary)
 		let index2 = s.indexOf('\n', index1)
 		let boundary = s.substring(index1 + searchPhrases.boundary.length, index2)
 		boundary = trimQuotes(boundary)
-		console.log(`boundary identifier is: ${boundary}`)
+		//console.log(`boundary identifier is: ${boundary}`)
 
 		let leftover = s.substring(index2)
 		splitSections(leftover, boundary)
 
 		results.sections.forEach(function(section) {
-			console.log(`Section ${section.id}`)
-			let content = getContentType(section.text)
-			decodeSection(section)
-			let encoding = getTransferEncoding(section.text)
-			let media = getMediaQuery(section.text)
-			section.contentType = content.result
-			section.transferEncoding = encoding.result
-			section.mediaQuery = media.result
+			let content = Parser.getContentType(section.text)
+      testSingle(section.text, content.result)
 		})
 	}
 
@@ -218,7 +155,7 @@ let test = function(decoded, text) {
 		//put according text into each section
 		for (let i = 0; i<indexList.length-1; i++) {
 			let text = s.substring(indexList[i], indexList[i+1])
-			let newSection = new Section(results.sections.length, text)
+			let newSection = new Models.Section(results.sections.length, text)
 			results.sections.push(newSection)
 		}
 		//console.log(results.sections)
@@ -243,6 +180,7 @@ let test = function(decoded, text) {
 		}
 	}
 
+  /** Used by testMulti to trim quotations from boundary identifier */
 	let trimQuotes = function(s) {
 		//console.log(s)
 		let index1 = s.indexOf('"')
@@ -254,57 +192,27 @@ let test = function(decoded, text) {
 		return string
 	}
 
-	let report = function() {
-		console.clear()
-		console.log('// REPORT //')
-		console.log(`file name: ${results.fileName}`)
-		console.log(`sender: ${results.sender}\ncontent type: ${results.mainType}`)
-		results.sections.forEach(function(each) {
-			console.log(`Section ${each.id}:`)
-			message('  content type', true, each.contentType)
-			message('  transfer encoding', true, each.transferEncoding)
-			message('  media query', true, each.mediaQuery)
-		})
-	}
 
-	var execute = function(decoded, fileText) {
-		// let sender = getSender(fileText)
-		// results.sender = sender.result
-		console.log(decoded.from[0].name)
-		results.sender = decoded.from[0].name
-		let content = getContentType(fileText)
-		results.mainType = content.result
-		if (content.result == contentTypes.multiPart) {
-			let leftover = fileText.substring(content.endIndex)
-			testMulti(leftover)
-		} else {
-			let encoding = getTransferEncoding(fileText)
-			let media = getMediaQuery(fileText)
-			let newSection = new Section(results.sections.length, fileText.substring(content.startIndex), content.result, encoding.result, media.result)
-			decodeSection(newSection)
-			results.sections.push(newSection)
-		}
-		report()
-		//console.log(results)
-	}
+  let report = function() {
+    console.clear()
+    console.log('// REPORT //')
+    console.log(`File Name: ${results.fileName}`)
+    console.log(`Sender Name: ${results.sender}\nContent-type: ${results.mainType}`)
+    if (results.textPlain) {
+      console.log(`Text Part: Yes`)
+      //Parser.message('  content type', true, results.textPlain.contentType)
+      Parser.message('  transfer encoding', true, results.textPlain.transferEncoding)
+      //number of lines
+    } else {
+      console.log('Text Part: No')
+    }
+    if (results.textHTML) {
+      console.log('HTML Part: Yes')
+      //Parser.message('  content type', true, results.textHTML.contentType)
+      Parser.message('  transfer encoding', true, results.textHTML.transferEncoding)
+      Parser.message('  media query', true, results.textHTML.mediaQuery)
+    } else {
+      console.log('HTML Part: No')
+    }
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

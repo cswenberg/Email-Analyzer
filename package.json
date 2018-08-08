@@ -1,0 +1,22 @@
+{
+  "name": "email-html-analyzer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cswenberg/Email-HTML-Analyzer.git"
+  },
+  "author": "Conner Swenberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cswenberg/Email-HTML-Analyzer/issues"
+  },
+  "homepage": "https://github.com/cswenberg/Email-HTML-Analyzer#readme",
+  "dependencies": {
+    "mailparser-mit": "^0.6.2"
+  }
+}
