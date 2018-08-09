@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/cswenberg/Email-HTML-Analyzer#readme",
   "dependencies": {
+    "line-counter": "^1.1.0",
     "mailparser-mit": "^0.6.2"
   }
 }

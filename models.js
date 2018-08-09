@@ -17,6 +17,7 @@ class PlainText {
   }
   numberLines() { return this.text.count('\n') }
 }
+
 class TextHTML {
   constructor(id, text, transferEncoding, mediaQuery) {
     this.id = id
