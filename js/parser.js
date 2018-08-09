@@ -16,6 +16,49 @@
 
 var Models = require('./models.js')
 
+let execute = (fileName, fileText, decodedText) => {   // let sender = getSender(fileText)
+  // results.sender = sender.result
+  results.fileName = fileName
+  decoded = decodedText
+  results.sender = decoded.from[0].name
+  let content = getContentType(fileText)
+  results.mainType = content.result
+  if (content.result == contentTypes.multiPart) {
+    let leftover = fileText.substring(content.endIndex)
+    testMulti(leftover)
+  } else {
+    testSingle(fileText, results.mainType)
+  }
+}
+
+let report = () => {
+    //console.clear()
+    console.log('// REPORT //')
+    console.log(`File Name: ${results.fileName}`)
+    console.log(`Sender Name: ${results.sender}\nContent-type: ${results.mainType}`)
+    if (results.textPlain) {
+      console.log(`Text Part: Yes`)
+      //message('  content type', true, results.textPlain.contentType)
+      message('  transfer encoding', true, results.textPlain.transferEncoding)
+      //number of lines
+    } else {
+      console.log('Text Part: No')
+    }
+    if (results.textHTML) {
+      console.log('HTML Part: Yes')
+      //message('  content type', true, results.textHTML.contentType)
+      message('  transfer encoding', true, results.textHTML.transferEncoding)
+      message('  media query', true, results.textHTML.mediaQuery)
+    } else {
+      console.log('HTML Part: No')
+    }
+  }
+
+let getResults = () => {
+  return results
+}
+
+
 let decoded
 let results = {
   fileName: '',
@@ -40,44 +83,6 @@ let contentTypes = {
   textHTML: 'text/html'
 }
 
-let execute = async (fileName, fileText, decodedText) => {
-  // let sender = getSender(fileText)
-  // results.sender = sender.result
-  results.fileName = fileName
-  decoded = decodedText
-  results.sender = decoded.from[0].name
-  let content = getContentType(fileText)
-  results.mainType = content.result
-  if (content.result == contentTypes.multiPart) {
-    let leftover = fileText.substring(content.endIndex)
-    testMulti(leftover)
-  } else {
-    testSingle(fileText, results.mainType)
-  }
-}
-
-let report = () => {
-  //console.clear()
-  console.log('// REPORT //')
-  console.log(`File Name: ${results.fileName}`)
-  console.log(`Sender Name: ${results.sender}\nContent-type: ${results.mainType}`)
-  if (results.textPlain) {
-    console.log(`Text Part: Yes`)
-    //message('  content type', true, results.textPlain.contentType)
-    message('  transfer encoding', true, results.textPlain.transferEncoding)
-    //number of lines
-  } else {
-    console.log('Text Part: No')
-  }
-  if (results.textHTML) {
-    console.log('HTML Part: Yes')
-    //message('  content type', true, results.textHTML.contentType)
-    message('  transfer encoding', true, results.textHTML.transferEncoding)
-    message('  media query', true, results.textHTML.mediaQuery)
-  } else {
-    console.log('HTML Part: No')
-  }
-}
 
 let testSingle = (fileText, type) => {
   let encoding = getTransferEncoding(fileText)
@@ -223,9 +228,8 @@ let getMediaQuery = s => {
   return query
 }
 
-
 module.exports = {
   execute,
   report,
-  getResults: () => results
+  getResults
 }

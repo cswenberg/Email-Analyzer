@@ -27,7 +27,6 @@ class TextHTML {
   }
 }
 
-
 module.exports = {
   PlainText,
   TextHTML,
