@@ -2,12 +2,23 @@
 <html lang='en'>
 	<head>
 		<meta charset='UTF-8'>
+		<link rel="stylesheet" href="css/style.css">
 		<title>Email HTML Content Analyzer</title>
 	</head>
 
 	<body>
 		<h1>Email HTML Content Analyzer</h1>
 		<input type="file" id="txtfiletoread" />
+		<div class="results">
+			<h2 class="title">Results:</h2>
+			<div class="results_data">
+				<h3 class="sender">Sender: </h3>
+				<h3 class="sender-email">Sender email: </h3>
+				<h3 class="content_type">Content-type: </h3>
+				<h3 class="text_part">Text part: </h3>
+				<h3 class="html_part">HTML part: </h3>
+			</div>
+		</div>
 	</body>
 
 	<script src='script.js'></script>
