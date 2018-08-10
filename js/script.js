@@ -36,6 +36,7 @@ const report = (results) => {
 }
 
 if (!usingCommandLine) {
+  alert('Webpage is not functional yet!!')
   // ABILITY TO PROMPT WINDOW TO SELECT FILE TO ANALYZE
   window.onload = () => {
     //Check the support for the File API support
