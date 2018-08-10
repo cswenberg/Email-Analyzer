@@ -64,6 +64,7 @@ let decoded
 let results = {
   fileName: '',
   sender: '',
+  senderEmail: '',
   mainType: '',
   sections: []
 }

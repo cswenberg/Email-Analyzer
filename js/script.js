@@ -6,6 +6,18 @@ let Parser = require('./parser.js')
 let usingCommandLine = false
 let results
 
+let DOM = {
+  sender: document.querySelector('.sender-result'),
+  email: document.querySelector('.email-result'),
+  content_type: document.querySelector('.content_type-result'),
+  textHead: document.querySelector('.text_part'),
+  htmlHead: document.querySelector('.html_part'),
+  textEncoding: document.querySelector('.text-encoding'),
+  htmlEncoding: document.querySelector('.html-encoding'),
+  textLines: document.querySelector('.text-lines'),
+  htmlMedia: document.querySelector('.html-media')
+}
+
 let start = (fileName) => {
   fs.readFile(fileName, 'utf8', (error, data) => {
     if (error) throw error;
@@ -18,7 +30,6 @@ let start = (fileName) => {
 let decode = (email, fileName = 'no file name found') => {
     // setup an event listener when the parsing finishes
     mailparser.on("end", decoded => {
-      console.log(decoded.from)
       Parser.execute(fileName, email, decoded)
       results = Parser.getResults()
       console.log('results saved')
@@ -33,11 +44,28 @@ let decode = (email, fileName = 'no file name found') => {
 }
 
 const report = (results) => {
-  Parser.report()
+  DOM.sender.textContent = results.sender
+  DOM.email.textContent = results.senderEmail
+  DOM.content_type.textContent = results.mainType
+  if (results.textPlain) {
+    DOM.textHead.textContent = DOM.textHead.textContent + 'Yes'
+    DOM.textEncoding.textContent = `transfer encoding: ${results.textPlain.transferEncoding}`
+    DOM.textLines.textContent = `number of lines: none yet (in development)`
+
+  } else {
+    DOM.textHead.textContent = DOM.textHead.textContent + 'No'
+  }
+  if (results.textHTML) {
+    DOM.htmlHead.textContent = DOM.htmlHead.textContent + 'Yes'
+    DOM.htmlEncoding.textContent = `transfer encoding: ${results.textHTML.transferEncoding}`
+    DOM.htmlMedia.textContent = `media queries: ${results.textHTML.mediaQuery}`
+  } else {
+    DOM.htmlHead.textContent = DOM.htmlHead.textContent + 'No'
+  }
 }
 
 if (!usingCommandLine) {
-  alert('Webpage is not functional yet!!')
+  //alert('Webpage is not functional yet!!')
   // ABILITY TO PROMPT WINDOW TO SELECT FILE TO ANALYZE
   window.onload = () => {
     //Check the support for the File API support
