@@ -3,7 +3,7 @@ let MailParser = require('mailparser-mit').MailParser
 let mailparser = new MailParser()
 let Parser = require('./parser.js')
 
-let usingCommandLine = true
+let usingCommandLine = false
 let results
 
 let start = (fileName) => {
@@ -18,6 +18,7 @@ let start = (fileName) => {
 let decode = (email, fileName = 'no file name found') => {
     // setup an event listener when the parsing finishes
     mailparser.on("end", decoded => {
+      console.log(decoded.from)
       Parser.execute(fileName, email, decoded)
       results = Parser.getResults()
       console.log('results saved')
@@ -53,7 +54,7 @@ if (!usingCommandLine) {
           let reader = new FileReader();
           reader.onload = function (e) {
             fileText = reader.result
-            Decoder.decode(fileText)
+            decode(fileText)
           }
           reader.readAsText(fileTobeRead);
         }

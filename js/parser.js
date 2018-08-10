@@ -21,6 +21,7 @@ let execute = (fileName, fileText, decodedText) => {   // let sender = getSender
   results.fileName = fileName
   decoded = decodedText
   results.sender = decoded.from[0].name
+  results.senderEmail = decoded.from[0].address
   let content = getContentType(fileText)
   results.mainType = content.result
   if (content.result == contentTypes.multiPart) {
@@ -35,7 +36,7 @@ let report = () => {
     //console.clear()
     console.log('// REPORT //')
     console.log(`File Name: ${results.fileName}`)
-    console.log(`Sender Name: ${results.sender}\nContent-type: ${results.mainType}`)
+    console.log(`Sender Name: ${results.sender}\nSender email: ${results.senderEmail}\nContent-type: ${results.mainType}`)
     if (results.textPlain) {
       console.log(`Text Part: Yes`)
       //message('  content type', true, results.textPlain.contentType)
