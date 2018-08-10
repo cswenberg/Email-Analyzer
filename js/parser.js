@@ -18,6 +18,15 @@ var Models = require('./models.js')
 
 let execute = (fileName, fileText, decodedText) => {   // let sender = getSender(fileText)
   // results.sender = sender.result
+  //reset results
+  results = {
+    fileName: '',
+    sender: '',
+    senderEmail: '',
+    mainType: '',
+    sections: []
+  }
+  
   results.fileName = fileName
   decoded = decodedText
   results.sender = decoded.from[0].name
@@ -58,7 +67,6 @@ let report = () => {
 let getResults = () => {
   return results
 }
-
 
 let decoded
 let results = {

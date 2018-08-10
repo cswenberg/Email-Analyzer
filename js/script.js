@@ -44,24 +44,40 @@ let decode = (email, fileName = 'no file name found') => {
 }
 
 const report = (results) => {
-  DOM.sender.textContent = results.sender
-  DOM.email.textContent = results.senderEmail
-  DOM.content_type.textContent = results.mainType
+  DOM.sender.innerHTML = results.sender
+  DOM.email.innerHTML = results.senderEmail
+  DOM.content_type.innerHTML = results.mainType
   if (results.textPlain) {
-    DOM.textHead.textContent = DOM.textHead.textContent + 'Yes'
-    DOM.textEncoding.textContent = `transfer encoding: ${results.textPlain.transferEncoding}`
-    DOM.textLines.textContent = `number of lines: none yet (in development)`
-
+    DOM.textHead.innerHTML = 'Text part: Yes'
+    DOM.textEncoding.innerHTML = `transfer encoding: ${results.textPlain.transferEncoding}`
+    DOM.textLines.innerHTML = `number of lines: none yet (in development)`
   } else {
-    DOM.textHead.textContent = DOM.textHead.textContent + 'No'
+    DOM.textHead.innerHTML = 'Text part: No'
   }
   if (results.textHTML) {
-    DOM.htmlHead.textContent = DOM.htmlHead.textContent + 'Yes'
-    DOM.htmlEncoding.textContent = `transfer encoding: ${results.textHTML.transferEncoding}`
-    DOM.htmlMedia.textContent = `media queries: ${results.textHTML.mediaQuery}`
+    DOM.htmlHead.innerHTML = 'HTML part: Yes'
+    DOM.htmlEncoding.innerHTML = `transfer encoding: ${results.textHTML.transferEncoding}`
+    DOM.htmlMedia.innerHTML = `media queries: ${results.textHTML.mediaQuery}`
   } else {
-    DOM.htmlHead.textContent = DOM.htmlHead.textContent + 'No'
+    DOM.htmlHead.innerHTML ='HTML part: No'
   }
+}
+
+const resetUI = () => {
+  console.log(DOM)
+  console.log('reset ui executing')
+  DOM.sender.innerHTML = ""
+  DOM.email.innerHTML = ""
+  DOM.content_type.innerHTML = ""
+  DOM.textHead.innerHTML = "Text part: "
+  console.log(DOM.textHead.innerHTML)
+  DOM.htmlHead.innerHTML ="HTML part: "
+  console.log(DOM.htmlHead.innerHTML)
+  DOM.textEncoding.innerHTML = ""
+  DOM.textLines.innerHTML = ""
+  DOM.htmlEncoding.innerHTML = ""
+  DOM.htmlMedia.innerHTML = ""
+  console.log(DOM)
 }
 
 if (!usingCommandLine) {
@@ -82,6 +98,7 @@ if (!usingCommandLine) {
           let reader = new FileReader();
           reader.onload = function (e) {
             fileText = reader.result
+            //resetUI()
             decode(fileText)
           }
           reader.readAsText(fileTobeRead);
