@@ -15,6 +15,27 @@
 // let counter = new LineCounter(fileText)
 
 var Models = require('./models.js')
+let Controller = require('../index.js')
+console.log(Controller)
+let MailParser = require('mailparser-mit').MailParser
+let mailparser = new MailParser()
+
+let decode = (email, fileName = 'no file name found') => {
+    // setup an event listener when the parsing finishes
+    mailparser.on("end", (decoded) => {
+      execute(fileName, email, decoded)
+      results = getResults()
+      console.log('results saved')
+      report(results)
+      //Controller.renderResults(results)
+      //needed to call test inside this block because test was being called before this section of parsing finished,
+      //causing crashed because passing the 'mail' object would be undefined
+    });
+    // send the email source to the parser
+    mailparser.write(email);
+    mailparser.end();
+    console.log('decode done')
+}
 
 let execute = (fileName, fileText, decodedText) => {   // let sender = getSender(fileText)
   // results.sender = sender.result
@@ -26,7 +47,7 @@ let execute = (fileName, fileText, decodedText) => {   // let sender = getSender
     mainType: '',
     sections: []
   }
-  
+
   results.fileName = fileName
   decoded = decodedText
   results.sender = decoded.from[0].name
@@ -41,7 +62,7 @@ let execute = (fileName, fileText, decodedText) => {   // let sender = getSender
   }
 }
 
-let report = () => {
+let report = (results) => {
     //console.clear()
     console.log('// REPORT //')
     console.log(`File Name: ${results.fileName}`)
@@ -239,7 +260,10 @@ let getMediaQuery = s => {
 }
 
 module.exports = {
+  decode,
   execute,
   report,
   getResults
 }
+
+console.log(module.exports)

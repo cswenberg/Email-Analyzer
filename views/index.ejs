@@ -8,7 +8,12 @@
 
 	<body>
 		<h1>Email HTML Content Analyzer</h1>
-		<input type="file" id="txtfiletoread" />
+    <fieldset>
+        <form action="/" method="post">
+          <input name="file" type="file" class="ghost-input" placeholder="" required>
+          <input type="submit" class="ghost-button" value="Submit">
+        </form>
+    </fieldset>
 		<div class="results">
 			<h2 class="title">Results:</h2>
 			<div class="results_data">
@@ -28,6 +33,6 @@
 		</div>
 	</body>
 
-	<script src='./js/bundle.js'></script>
+	<script type="text/javascript" src='./index.js'></script>
 
 </html>

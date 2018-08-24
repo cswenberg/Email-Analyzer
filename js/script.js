@@ -1,7 +1,12 @@
 
+
+console.log('in script.js')
+
 let MailParser = require('mailparser-mit').MailParser
 let mailparser = new MailParser()
 let Parser = require('./parser.js')
+let Controller = require('../index.js')
+let fs = require('fs')
 
 let usingCommandLine = false
 let results
@@ -34,6 +39,8 @@ let decode = (email, fileName = 'no file name found') => {
       results = Parser.getResults()
       console.log('results saved')
       report(results)
+      Controller.renderResults(results)
+      console.log('renderResults called')
       //needed to call test inside this block because test was being called before this section of parsing finished,
       //causing crashed because passing the 'mail' object would be undefined
     });
@@ -85,6 +92,7 @@ if (!usingCommandLine) {
   // ABILITY TO PROMPT WINDOW TO SELECT FILE TO ANALYZE
   window.onload = () => {
     //Check the support for the File API support
+    console.log('window.onload called')
     if (window.File && window.FileReader && window.FileList && window.Blob) {
       let fileSelected = document.getElementById('txtfiletoread');
       fileSelected.addEventListener('change', (e) => {
@@ -94,11 +102,12 @@ if (!usingCommandLine) {
         let fileTobeRead = fileSelected.files[0]
         //Check of the extension match
         if (fileTobeRead.type.match(fileExtension)) {
-          //Initialize the FileReader object to read the 2file
+          //Initialize the FileReader object to read the file
           let reader = new FileReader();
           reader.onload = function (e) {
             fileText = reader.result
             //resetUI()
+            window.myFile = fileText
             decode(fileText)
           }
           reader.readAsText(fileTobeRead);
@@ -112,8 +121,6 @@ if (!usingCommandLine) {
     }
   }
 } else if (usingCommandLine) {
-  // grabs file from arguments in command line
-  var fs = require('fs')
   // Make sure we got a filename on the command line.
   if (process.argv.length < 3) {
     console.log(`Usage: node ${process.argv[1]} FILENAME`)
@@ -124,4 +131,8 @@ if (!usingCommandLine) {
   let filename = process.argv[2];
   console.log('script',filename)
   start(filename)
+}
+
+module.exports = {
+  decode
 }
