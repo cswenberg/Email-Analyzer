@@ -4,3 +4,6 @@ Analyzes emails in MIME formatby extracting content data like sender information
 
 BEFORE USE:
   run 'npm install' to download all necessary npm modules (will not work otherwise)
+
+RUN:
+  run by command 'node index.js', then visit localhost:8888 on your browser to view interface

@@ -16,18 +16,38 @@
 
 var Models = require('./models.js')
 let Controller = require('../index.js')
-console.log(Controller)
+//console.log(Controller)
 let MailParser = require('mailparser-mit').MailParser
-let mailparser = new MailParser()
 
-let decode = (email, fileName = 'no file name found') => {
+let renderResults = (res,results) => {
+  console.log('rendering results')
+  let anal = {}
+  // (results.sender) ? render.sender = results.sender:
+  // (results.senderEmail) ? render.senderEmail = results.senderEmail:
+  // (results.mainType) ? render.mainType = results.mainType:
+  // if (results.textPlain) {
+  //   render.textPlain = results.textPlain
+  //   render.plainEncoding = results.textPlain.transferEncoding
+  // }
+  // (results.textHTML) ? {
+  //   render.textHTML = results.textHTML
+  //   render.htmlEncoding = results.textHTML.transferEncoding
+  //   render.htmlMedia = results.textHTML.mediaQuery
+  // }
+  console.log(anal)
+  res.render('index', anal)
+}
+
+let decode = (res, email, fileName = 'no file name found') => {
+    let mailparser = new MailParser()
     // setup an event listener when the parsing finishes
     mailparser.on("end", (decoded) => {
       execute(fileName, email, decoded)
       results = getResults()
       console.log('results saved')
+      console.log(decoded.from[0])
       report(results)
-      //Controller.renderResults(results)
+      //renderResults(res, results)
       //needed to call test inside this block because test was being called before this section of parsing finished,
       //causing crashed because passing the 'mail' object would be undefined
     });
@@ -37,19 +57,18 @@ let decode = (email, fileName = 'no file name found') => {
     console.log('decode done')
 }
 
+let reset = () => {
+  results = {}
+  sections = []
+}
+
 let execute = (fileName, fileText, decodedText) => {   // let sender = getSender(fileText)
   // results.sender = sender.result
   //reset results
-  results = {
-    fileName: '',
-    sender: '',
-    senderEmail: '',
-    mainType: '',
-    sections: []
-  }
-
+  reset()
   results.fileName = fileName
   decoded = decodedText
+  console.log(decoded.from[0])
   results.sender = decoded.from[0].name
   results.senderEmail = decoded.from[0].address
   let content = getContentType(fileText)
@@ -64,6 +83,7 @@ let execute = (fileName, fileText, decodedText) => {   // let sender = getSender
 
 let report = (results) => {
     //console.clear()
+    console.log(results)
     console.log('// REPORT //')
     console.log(`File Name: ${results.fileName}`)
     console.log(`Sender Name: ${results.sender}\nSender email: ${results.senderEmail}\nContent-type: ${results.mainType}`)
@@ -90,13 +110,8 @@ let getResults = () => {
 }
 
 let decoded
-let results = {
-  fileName: '',
-  sender: '',
-  senderEmail: '',
-  mainType: '',
-  sections: []
-}
+// let results = {}
+// let sections = []
 
 let searchPhrases = {
   contentType: 'Content-Type: ',
@@ -118,11 +133,11 @@ let contentTypes = {
 let testSingle = (fileText, type) => {
   let encoding = getTransferEncoding(fileText)
   if (type == contentTypes.textPlain) {
-    let newPlainText = new Models.PlainText(results.sections.length, decoded.text, encoding.result)
+    let newPlainText = new Models.PlainText(sections.length, decoded.text, encoding.result)
     results.textPlain = newPlainText
   } else if (type == contentTypes.textHTML) {
     let media = getMediaQuery(fileText)
-    let newTextHTML = new Models.TextHTML(results.sections.length, decoded.html, encoding.result, media.result)
+    let newTextHTML = new Models.TextHTML(sections.length, decoded.html, encoding.result, media.result)
     results.textHTML = newTextHTML
   }
 }
@@ -134,7 +149,7 @@ let testMulti = s => {
   boundary = trimQuotes(boundary)
   let leftover = s.substring(index2)
   splitSections(leftover, boundary)
-  results.sections.forEach(section => {
+  sections.forEach(section => {
     let content = getContentType(section.text)
     testSingle(section.text, content.result)
   })
@@ -158,8 +173,8 @@ let splitSections = (s, boundary) => {
   //put according text into each section
   for (let i = 0; i<indexList.length-1; i++) {
     let text = s.substring(indexList[i], indexList[i+1])
-    let newSection = new Models.Section(results.sections.length, text)
-    results.sections.push(newSection)
+    let newSection = new Models.Section(sections.length, text)
+    sections.push(newSection)
   }
 }
 
@@ -265,5 +280,3 @@ module.exports = {
   report,
   getResults
 }
-
-console.log(module.exports)
