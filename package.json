@@ -9,17 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cswenberg/Email-HTML-Analyzer.git"
+    "url": "git+https://github.com/cswenberg/Email-Analyzer.git"
   },
   "author": "Conner Swenberg",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cswenberg/Email-HTML-Analyzer/issues"
+    "url": "https://github.com/cswenberg/Email-Analyzer/issues"
   },
-  "homepage": "https://github.com/cswenberg/Email-HTML-Analyzer#readme",
+  "homepage": "https://github.com/cswenberg/Email-Analyzer#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "handlebars": "^4.0.11",
