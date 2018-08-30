@@ -1,41 +1,31 @@
 
-
-// let fs = require('fs')
-// let fileName = require('./script.js').fileName
-// console.log('parser', fileName)
-// // calling format:
-// // let counter = new LineCounter(#texttoread)
-// let fileText
-// fs.readFile(fileName, 'utf8', (error, data) => {
-//   if (error) throw error;
-//   console.log(`${fileName} successfully loaded`);
-//   fileText = data
-// });
 // let LineCounter = require('line-counter')
 // let counter = new LineCounter(fileText)
 
 var Models = require('./models.js')
-let Controller = require('../index.js')
-//console.log(Controller)
 let MailParser = require('mailparser-mit').MailParser
 
 let renderResults = (res,results) => {
-  console.log('rendering results')
-  let anal = {}
-  // (results.sender) ? render.sender = results.sender:
-  // (results.senderEmail) ? render.senderEmail = results.senderEmail:
-  // (results.mainType) ? render.mainType = results.mainType:
-  // if (results.textPlain) {
-  //   render.textPlain = results.textPlain
-  //   render.plainEncoding = results.textPlain.transferEncoding
-  // }
-  // (results.textHTML) ? {
-  //   render.textHTML = results.textHTML
-  //   render.htmlEncoding = results.textHTML.transferEncoding
-  //   render.htmlMedia = results.textHTML.mediaQuery
-  // }
-  console.log(anal)
-  res.render('index', anal)
+  let render = {
+    sender: results.sender,
+    senderEmail: results.senderEmail,
+    mainType: results.mainType
+  }
+  if(results.textPlain) {
+      render.textPart = 'Yes'
+      render.textEncoding = `transfer encoding: ${results.textPlain.transferEncoding}`
+      render.textLines = 'line count: not developed yet'
+  } else {
+    render.textPart = 'No'
+  }
+  if(results.textHTML) {
+    render.htmlPart = 'Yes'
+    render.htmlEncoding = `transfer encoding: ${results.textHTML.transferEncoding}`
+    render.mediaQuery = `media queries: ${results.textHTML.mediaQuery}`
+  } else {
+    render.htmlPart = 'No'
+  }
+  res.render('index', render)
 }
 
 let decode = (res, email, fileName = 'no file name found') => {
@@ -44,17 +34,14 @@ let decode = (res, email, fileName = 'no file name found') => {
     mailparser.on("end", (decoded) => {
       execute(fileName, email, decoded)
       results = getResults()
-      console.log('results saved')
-      console.log(decoded.from[0])
-      report(results)
-      //renderResults(res, results)
+      //report(results)
+      renderResults(res, results)
       //needed to call test inside this block because test was being called before this section of parsing finished,
       //causing crashed because passing the 'mail' object would be undefined
     });
     // send the email source to the parser
     mailparser.write(email);
     mailparser.end();
-    console.log('decode done')
 }
 
 let reset = () => {
@@ -63,12 +50,9 @@ let reset = () => {
 }
 
 let execute = (fileName, fileText, decodedText) => {   // let sender = getSender(fileText)
-  // results.sender = sender.result
-  //reset results
   reset()
   results.fileName = fileName
   decoded = decodedText
-  console.log(decoded.from[0])
   results.sender = decoded.from[0].name
   results.senderEmail = decoded.from[0].address
   let content = getContentType(fileText)
@@ -82,7 +66,6 @@ let execute = (fileName, fileText, decodedText) => {   // let sender = getSender
 }
 
 let report = (results) => {
-    //console.clear()
     console.log(results)
     console.log('// REPORT //')
     console.log(`File Name: ${results.fileName}`)
@@ -110,8 +93,6 @@ let getResults = () => {
 }
 
 let decoded
-// let results = {}
-// let sections = []
 
 let searchPhrases = {
   contentType: 'Content-Type: ',
@@ -129,7 +110,7 @@ let contentTypes = {
   textHTML: 'text/html'
 }
 
-
+// PARSING METHODS
 let testSingle = (fileText, type) => {
   let encoding = getTransferEncoding(fileText)
   if (type == contentTypes.textPlain) {
@@ -192,7 +173,7 @@ let findNextBoundary = (s, boundary) => {
   }
 }
 
-/** Used by testMulti to trim quotations from boundary identifier */
+// Used by testMulti to trim quotations from boundary identifier
 let trimQuotes = s => {
   let index1 = s.indexOf('"')
   let string = s.substring(index1+1)
@@ -237,7 +218,6 @@ let message = (s, bool, result) => {
 
 let getQuery = (s, phrase, endPhrase, searchWord, wantLineNumber = false) => {
   let query = parser(s, phrase, endPhrase, wantLineNumber)
-  //message(searchWord, query.success, query.result)
   return query
 }
 
@@ -246,8 +226,6 @@ let getSender = s => {
   if (index1 != -1) {
     let query = getQuery(s, searchPhrases.sender, '\n', 'sender')
     return query
-  } else {
-    //console.log(`${searchPhrases.arcAuth} not found.`)
   }
   return {
     success: false,
@@ -275,8 +253,5 @@ let getMediaQuery = s => {
 }
 
 module.exports = {
-  decode,
-  execute,
-  report,
-  getResults
+  decode
 }
