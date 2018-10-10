@@ -6,4 +6,4 @@ BEFORE USE:
   run 'npm install' to download all necessary npm modules (will not work otherwise)
 
 RUN:
-  run by command 'node index.js', then visit localhost:8888 on your browser to view interface
+  run by command 'npm start' which will open localhost:8888 on browser and run server on port 8888.
